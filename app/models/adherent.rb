@@ -1,0 +1,2 @@
+class Adherent < ApplicationRecord
+end

@@ -10,10 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_132218) do
+ActiveRecord::Schema.define(version: 2021_04_29_134626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adherents", force: :cascade do |t|
+    t.string "prenom"
+    t.string "nom"
+    t.string "mail"
+    t.string "telephone"
+    t.string "adresse"
+    t.string "codepostal"
+    t.string "ville"
+    t.boolean "master"
+    t.date "date_naissance"
+    t.string "numero_securite_social"
+    t.string "commune_naissance"
+    t.string "codepostal_naissance"
+    t.string "nom_banque"
+    t.string "iban"
+    t.string "bic"
+    t.boolean "cvec"
+    t.boolean "certificat_scolarite"
+    t.boolean "carte_vital"
+    t.boolean "carte_identite"
+    t.boolean "ba"
+    t.boolean "cotisation"
+    t.boolean "membre"
+    t.boolean "alumni_ejc"
+    t.boolean "demission"
+    t.string "annee_mandat"
+    t.string "campus"
+    t.string "pole"
+    t.string "poste"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
