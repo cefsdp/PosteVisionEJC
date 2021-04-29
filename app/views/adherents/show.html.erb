@@ -1,0 +1,44 @@
+<div class="main">
+    <div class="container">
+        <br>
+        <span><%= link_to edit_adherent_path(@adherent) do %>Modifier les informations <i class="far fa-edit edit"></i><% end %></span>
+		<span><%= link_to adherent_path(@adherent), method: :delete do %>Supprimer l'étudiant <i class="far fa-trash-alt delete"></i><% end %></span>
+        <br>
+        <div> Prenom : <%= @adherent.prenom %></div> 
+        <div> Nom : <%= @adherent.nom %></div> 
+        <br>
+        <div> Adresse Email : <%= @adherent.mail %></div> 
+        <div> Telephone : <%= @adherent.telephone %></div> 
+        <br>
+        <div> Adresse Postale :<%= @adherent.adresse %></div> 
+        <div> Code Postal : <%= @adherent.codepostal %></div> 
+        <div> Ville : <%= @adherent.ville %></div> 
+        <br>
+        <div> Master : <%= @adherent.master %></div> 
+        <br>
+        <div> Date de Naissance : <%= @adherent.date_naissance %></div> 
+        <div> Numero Securite Social : <%= @adherent.numero_securite_social %></div> 
+        <br>
+        <div> Commune de Naissance : <%= @adherent.commune_naissance %></div> 
+        <div> Code Postal de Naissance : <%= @adherent.codepostal_naissance %></div> 
+        <br>
+        <div> Nom Banque : <%= @adherent.nom_banque %></div> 
+        <div> IBAN : <%= @adherent.iban %></div> 
+        <div> BIC : <%= @adherent.bic %></div> 
+        <br>
+        <div> Carte d'Identité : <%= @adherent.carte_identite %></div> 
+        <div> Carte Vitale : <%= @adherent.carte_vital %></div> 
+        <div> Certificat de Scolarité : <%= @adherent.certificat_scolarite %></div> 
+        <div> CVEC : <%= @adherent.cvec %></div> 
+        <div> Bulletin d'Adhesion : <%= @adherent.ba %></div> 
+        <div> cotisation : <%= @adherent.cotisation %></div> 
+        <br>
+        <div> membre : <%= @adherent.membre %></div> 
+        <div> alumni : <%= @adherent.alumni_ejc %></div> 
+        <div> demission : <%= @adherent.demission %></div> 
+        <br>
+        <div> année de mandat : <%= @adherent.annee_mandat %></div> 
+        <div> campus : <%= @adherent.campus %></div> 
+        <div> pole : <%= @adherent.pole %> </div> 
+    </div>
+</div>

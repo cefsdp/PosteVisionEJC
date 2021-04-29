@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_29_134626) do
+ActiveRecord::Schema.define(version: 2021_04_29_200331) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,51 @@ ActiveRecord::Schema.define(version: 2021_04_29_134626) do
     t.string "campus"
     t.string "pole"
     t.string "poste"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "etudes", force: :cascade do |t|
+    t.string "references"
+    t.string "nom"
+    t.string "type"
+    t.string "prestation"
+    t.string "provenance"
+    t.string "campus"
+    t.date "date_demande"
+    t.string "nom_client"
+    t.string "prenom_client"
+    t.string "appelation_client"
+    t.string "poste_client"
+    t.string "adresse"
+    t.string "codepostal"
+    t.string "ville"
+    t.string "mail"
+    t.string "telephone"
+    t.integer "nbre_propcom"
+    t.integer "nbre_convetu"
+    t.boolean "conv_cadre"
+    t.date "date_propcom"
+    t.date "date_convetu"
+    t.date "date_convcadre"
+    t.string "num_bdc"
+    t.float "budget_HT"
+    t.float "taux_marge"
+    t.integer "nbre_av_je_methodo"
+    t.integer "nbre_av_je_delais"
+    t.integer "nbre_av_je_budget"
+    t.integer "nbre_av_je_rupture"
+    t.integer "nbre_av_je_rm"
+    t.integer "nbre_av_client_methodo"
+    t.integer "nbre_av_client_delais"
+    t.integer "nbre_av_client_budget"
+    t.integer "nbre_av_client_rupture"
+    t.integer "nbre_av_client_rm"
+    t.float "frais_ht"
+    t.float "budget_total_ht"
+    t.float "budget_total_ttc"
+    t.string "statut"
+    t.date "data_debut_etude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -1,0 +1,33 @@
+
+
+<div class="main">
+    <h1>Gestion des étudiants</h1>
+    <div class="Cartes">
+        <% @adherents.each do |adherent| %>
+            <%= link_to adherent_path(adherent) do %>
+                    <div class="Carte">
+                        <div class="Identite">
+                            <div class="Prenom">
+                                <%= adherent.prenom %>
+                            </div>
+                            <div class="Nom">
+                                <%= adherent.nom %>
+                            </div>
+                        </div>
+                        <div class="Documents">
+                            <% if adherent.cvec == true %><div class="docvert">cvec</div><% else %><div class="docrouge">cvec</div><% end %>
+                            <% if adherent.carte_identite == true %><div class="docvert">ID</div><% else %><div class="docrouge">ID</div><% end %>
+                            <% if adherent.carte_vital == true %><div class="docvert">CarteVitale</div><% else %><div class="docrouge">CarteVitale</div><% end %>
+                            <% if adherent.certificat_scolarite == true %><div class="docvert">CertifScol</div><% else %><div class="docrouge">CertifScol</div><% end %>
+                            <% if adherent.ba == true %><div class="docvert">BA</div><% else %><div class="docrouge">BA</div><% end %>
+                            <% if adherent.cotisation == true %><div class="docvert">Cotisation</div><% else %><div class="docrouge">Cotisation</div><% end %>
+                        </div>
+                    </div>
+            <% end %>
+        <% end %>
+    </div>
+
+    <%= link_to new_adherent_path do %>
+        <div> Nouveau Adhérent <i class="fas fa-plus-circle"></i></div>
+    <% end %>
+</div>

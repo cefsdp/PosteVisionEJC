@@ -1,0 +1,52 @@
+.formcontainer {
+    margin-bottom: 2%;
+    .formulaire {
+        display: flex;
+        flex-direction: column;
+        .Categorie {
+            display: flex;
+            flex-direction: column;
+            .Titre {
+                margin: 2% 0% 1% 0%;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                font-size: 24px;
+                color: #0000FF;
+            }
+            .Contenu {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 100%;
+                .part {
+                    display: flex;
+                    justify-content: space-between;
+                    align-content: space-between;
+                    width: 100%;
+                    .item2 {
+                        flex-grow: 0.45;
+                    }
+                    .item3 {
+                        flex-grow: 0.30;
+                    }
+                    .item4 {
+                        flex-grow: 0.20;
+                    }
+                }
+                .partbool {
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+        #Creation {
+            margin-top: 1%;
+            color: #FFFFFF;
+            background-color: #0000FF;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 30px;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+.Cartes {
+    display: flex;
+    flex-wrap: wrap;
+    .Carte {
+        border: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #FFBA09;
+        text-decoration: none;
+        padding: 10px;
+        margin: 10px;
+        .Identite {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #0000FF;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+        }
+        .Documents {
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            justify-content: space-between;
+            .docrouge {
+                color: red;
+            }
+            .docvert {
+                color: lightgreen;
+            }
+        }
+    }
+}
