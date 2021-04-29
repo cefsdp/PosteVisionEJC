@@ -1,0 +1,26 @@
+<div class="main">
+    <h1>Gestion des études</h1>
+    <div class="tableau">
+        <% @etudes.each do |etude| %>
+            <%= link_to etude_path(etude) do %>
+                    <div class="ligne">
+                        <div class="colone"><%= etude.reference %> <%= etude.nom %></div>
+                        <div class="colone"><%= etude.prenom_client %> <%= etude.nom_client %></div>
+                        <div class="colone"><%= etude.type %></div>
+                        <div class="colone"><%= etude.date_convetu %></div>
+                        <div class="colone"><%= etude.statut %></div>
+                        <div class="colone"><%= etude.prestation %></div>
+                        <div class="colone"><%= "JEH" %></div>
+                        <div class="colone"><%= etude.nbre_av_je_methodo + etude.nbre_av_je_delais + etude.nbre_av_je_budget + etude.nbre_av_je_rupture + etude.nbre_av_je_rm + etude.nbre_av_client_methodo + etude.nbre_av_client_delais + etude.nbre_av_client_budget + etude.nbre_av_client_rupture + etude.nbre_av_client_rm%></div>
+                        <div class="colone"><%= etude.budget_HT %></div>
+                        <div class="colone"><%= etude.frais_ht %></div>
+                        <div class="colone"><%= etude.etude.budget_HT + etude.frais_ht %></div>
+                    </div>
+            <% end %>
+        <% end %>
+    </div>
+
+    <%= link_to new_etude_path do %>
+        <div> Nouveau etude <i class="fas fa-plus-circle"></i></div>
+    <% end %>
+</div>

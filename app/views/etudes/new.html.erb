@@ -1,0 +1,95 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+            <%= simple_form_for(@etude) do |f| %>
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Contenu">
+                            <div class="Titre">Informations sur l'étude :</div>
+                            <div class="part">
+                                <div class="item3"><%= f.input :references %></div>
+                                <div class="item3"><%= f.input :nom %></div>
+                                <div class="item3"><%= f.input :date_demande, as: :date, html5: true, label: "Date de la demande d'étude :" %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item3"><%= f.input :type, as: :select, collection: ["Grand Groupe", "PME", "Entrepreneur", "J.E.", "Association", "Start-up"], label: "Type de client :"  %></div>
+                                <div class="item3"><%= f.input :prestation, as: :select, collection: ["Etude de marché", "Etude d'image", "Etude de satisfaction", "Clients Mystère", "Business Plan", "Plan de communication", "Sous traitance", "Autre"], label: "Prestation :"  %></div>
+                                <div class="item3"><%= f.input :campus, as: :select, collection: ["Paris", "Angers", "Bordeaux", "Lyon"]  %></div>
+                            </div>
+                            <div class="Titre">Contacts du client :</div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :mail, label: "Adresse electronique :" %></div>
+                                <div class="item2"><%= f.input :telephone, label: "Téléphone :" %></div>
+                            </div>
+                            <div class="Titre">Informations sur le client :</div>
+                            <div class="part">
+                                <div class="item4"><%= f.input :appelation_client, as: :select, collection: ["Monsieur", "Madame"]  %></div>
+                                <div class="item4"><%= f.input :prenom_client, label: "Prenom du client :" %></div>
+                                <div class="item4"><%= f.input :nom_client, label: "Nom du client :" %></div>
+                                <div class="item4"><%= f.input :poste_client, label: "Poste du client :" %></div>
+                            </div>
+                            <div class="Titre">Adresse de l'entreprise :</div>
+                            <div class="part">
+                                <div class="item3"><%= f.input :adresse, label: "Adresse de l'entreprise :" %></div>
+                                <div class="item3"><%= f.input :codepostal, label: "Code Postal :" %></div>
+                                <div class="item3"><%= f.input :ville, label: "Ville :" %></div>
+                            </div>
+                            <div class="Titre">Proposition commerciale :</div>
+                            <div class="part">
+                                <div class="item4"><%= f.input :nbre_propcom, label: "Nombre P.C." %></div>
+                                <div class="item4"><%= f.input :nbre_convetu, label: "Nombre C.E." %></div>
+                                <div class="item4"><%= f.input :conv_cadre, as: :boolean, checked_value: true, unchecked_value: false, label: "Convention Cadre", label: "" %></div>
+                                <div class="item4"><%= f.input :num_bdc, label: "Numéro de B.d.C." %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item3"><%= f.input :date_propcom, as: :date, html5: true, label: "Date d'envoie de la P.C." %></div>
+                                <div class="item3"><%= f.input :date_convetu, as: :date, html5: true, label: "Date de signature de la C.E." %></div>
+                                <div class="item3"><%= f.input :date_convcadre, as: :date, html5: true, label: "Date de signature de la C.C." %></div>
+                            </div>
+                            <div class="Titre">Avenants imputables à la junior :</div>
+                            <div class="part">
+                                <div class="item5"><%= f.input :nbre_av_je_methodo, html5: true, label: "Nbre av méthodologie" %></div>
+                                <div class="item5"><%= f.input :nbre_av_je_delais, html5: true, label: "Nbre av délais" %></div>
+                                <div class="item5"><%= f.input :nbre_av_je_budget, html5: true, label: "Nbre av budget" %></div>
+                                <div class="item5"><%= f.input :nbre_av_je_rupture, html5: true, label: "Nbre av rupture" %></div>
+                                <div class="item5"><%= f.input :nbre_av_je_rm, html5: true, label: "Nbre av au RM" %></div>
+                            </div>
+                            <div class="Titre">Avenants imputables au Client :</div>
+                            <div class="part">
+                                <div class="item5"><%= f.input :nbre_av_client_methodo, html5: true, label: "Nbre av méthodologie" %></div>
+                                <div class="item5"><%= f.input :nbre_av_client_delais, html5: true, label: "Nbre av délais" %></div>
+                                <div class="item5"><%= f.input :nbre_av_client_budget, html5: true, label: "Nbre av budget" %></div>
+                                <div class="item5"><%= f.input :nbre_av_client_rupture, html5: true, label: "Nbre av rupture" %></div>
+                                <div class="item5"><%= f.input :nbre_av_client_rm, html5: true, label: "Nbre av RM" %></div>
+                            </div>
+                            <div class="Titre">Budget et frais :</div>
+                            <div class="part">
+                                <div class="item5"><%= f.input :budget_HT, label: "Budget phases HT" %></div>
+                                <div class="item5"><%= f.input :taux_marge, label: "Taux de marge" %></div>
+                                <div class="item5"><%= f.input :frais_ht, label: "Frais HT" %></div>
+                                <div class="item5"><%= f.input :budget_total_ht, label: "Budget total HT" %></div>
+                                <div class="item5"><%= f.input :budget_total_ttc, label: "Budget total TTC" %></div>
+                            </div>
+                            <div class="Titre">Statut de l'étude :</div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :statut, as: :select, collection: ["Avortée", "Signé", "Stand By", "En cours"], label: "Statut de l'étude :"  %></div>
+                                <div class="item2"><%= f.input :data_debut_etude, as: :date, html5: true, label: "Date de début d'étude :" %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%= f.submit "Creer un Etude", id: "Creation" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+    
+    
+
+    
+
+    
+
+    
+

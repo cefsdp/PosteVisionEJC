@@ -74,7 +74,7 @@
                             </div>
                             <div class="part">
                                 <div class="item4"><%= f.input :annee_mandat, placeholder: '2019-2020' %></div>
-                                <div class="item4"><%= f.input :campus, placeholder: 'Paris' %></div>
+                                <div class="item4"><%= f.input :prestation, as: :select, collection: ["Paris", "Angers", "Bordeaux", "Lyon"]  %></div>
                                 <div class="item4"><%= f.input :pole, placeholder: 'Marketing' %></div>
                                 <div class="item4"><%= f.input :poste, placeholder: "Directeur des Systèmes d'Information" %></div>
                             </div>
