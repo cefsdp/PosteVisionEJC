@@ -1,2 +1,25 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if user_signed_in? %>
+    <div class="main">
+        <h1>Suivi des études en cours</h1>
+    </div>
+
+<% else %>
+
+    <div class="homecontainer">
+        <div class="BoosterLesJE">
+            <div class="divTexte">
+                <div class="texte">
+                    <div class="title">Booster les J.E. 🚀</div>
+                    <div class="description">Nous accompagnons les Junior-Entreprises dans la construction d’une image de marque professionnelle et dans l’optimisation de leur performance. </div>
+                    <div class="btn-1"><div class="txt">J'accélère !</div></div>
+                </div>
+            </div>
+            <div class="divForme">
+                <div class="form4"><div class="form"><%= render 'components/multipleforms' %></div></div>
+                <div class="form1"><div class="form"><%= render 'components/form1' %></div></div>
+                <div class="form2"><div class="form"><%= render 'components/form2' %></div></div>
+                <div class="form3"><div class="form"><%= render 'components/form3' %></div></div>
+            </div>
+        </div>
+    </div>
+<% end %>

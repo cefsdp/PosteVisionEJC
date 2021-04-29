@@ -1,0 +1,87 @@
+.BoosterLesJE {
+    height: 100vh;
+    width: 100%;
+    padding: 0% 10%;
+    background-size: cover;
+    background-color: #0000FF;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    .divTexte{
+        display: flex;
+        align-items: center;
+        height: 100%;
+        width: 50%;
+        .texte {
+            .title {
+                width: 540px;
+                height: 196px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 800;
+                font-size: 96px;
+                line-height: 98px;
+                color: #FFFFFF;
+                margin-bottom: 20px;
+            }
+            .description {
+                width: 540px;
+                height: 96px;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 300;
+                font-size: 18px;
+                line-height: 32px;
+                color: #FFFFFF;
+                margin-bottom: 20px;
+            }
+            .btn-1 {
+                background-color: #FFBA09;
+                width: 196px;
+                height: 62px;
+                .txt {
+                    font-size: 20px;
+                    font-family: 'Poppins', sans-serif;
+                }
+            }
+        }
+    }
+    .divForme {
+        width: 50%;
+        .form1 {
+            position: relative;
+            .form {
+                position: absolute;
+                z-index: 10;
+                left: 35vw;
+                top: 20vh;
+            }
+        }
+        .form2 {
+            position: relative;
+            .form {
+                position: absolute;
+                z-index: 10;
+                left: 5vw;
+                top: 50vh;
+            }
+        }
+        .form3 {
+            position: relative;
+            .form {
+                position: absolute;
+                z-index: 10;
+                left: 40vw;
+                top: 75vh;
+            }
+        }
+        .form4 {
+            position: relative;
+            width: 100%;
+            .form {
+                width: 100%;
+                position: absolute;
+                left: 18vw;
+                top: 20vh;
+            }            
+        }
+    }
+}

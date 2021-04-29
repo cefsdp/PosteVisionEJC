@@ -1,0 +1,15 @@
+.btn-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0000FF;
+    height: 40px;
+    width: 135px;
+    border-radius: 8px;
+    .txt {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 14px;
+        color: #FFFFFF;
+    }
+}

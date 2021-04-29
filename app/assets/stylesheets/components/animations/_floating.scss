@@ -1,0 +1,70 @@
+.floating-form1{
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 4s;	
+	-webkit-animation-duration: 4s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.floating-form2{
+	animation-delay: 2s;
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 4s;	
+	-webkit-animation-duration: 4s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.floating-form3{
+	animation-delay: 3s;
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 4s;	
+	-webkit-animation-duration: 4s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+.floating-form6{
+	animation-delay: 3s;
+	animation-name: floating;
+	-webkit-animation-name: floating;
+
+	animation-duration: 4s;	
+	-webkit-animation-duration: 4s;
+
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes floating {
+	0% {
+		transform: translateY(0%);	
+	}
+	50% {
+		transform: translateY(8%);	
+	}	
+	100% {
+		transform: translateY(0%);
+	}			
+}
+
+@-webkit-keyframes floating {
+	0% {
+		-webkit-transform: translateY(0%);	
+	}
+	50% {
+		-webkit-transform: translateY(8%);	
+	}	
+	100% {
+		-webkit-transform: translateY(0%);
+	}			
+}

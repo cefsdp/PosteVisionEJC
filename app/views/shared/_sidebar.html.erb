@@ -1,0 +1,20 @@
+<div class="sidenav">
+  <div class="head">
+    <%= render 'components/logo' %>
+  </div>
+
+  <div class="content">
+    <a href="#"><div class="MainAction">Ressources Humaines</div></a>
+    <a href="adherents"><div class="SecAction">Gestion Etudiants</div></a>
+    <a href="#"><div class="SecAction">Gestion Intervenants</div></a>
+    <a href="#"><div class="MainAction">Relations Clients</div></a>
+    <a href="#"><div class="SecAction">Gestion Etudes</div></a>
+  </div>
+
+
+
+  <div class="foot">
+    <div><%= link_to "Mon Compte", "#", :class => 'deco'%></div>
+    <div><%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class => 'deco'%></div>
+  </div>
+</div>

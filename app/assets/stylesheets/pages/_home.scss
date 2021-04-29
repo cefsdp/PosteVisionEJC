@@ -1,1 +1,7 @@
 // Specific CSS for your home-page
+.homecontainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: hidden;
+}
