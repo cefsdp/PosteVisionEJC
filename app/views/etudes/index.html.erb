@@ -3,7 +3,6 @@
     <div class="tableau">
         <div class="headline">
             <div class="colone"><%= "Référence" %></div>
-            <div class="colone"><%= "Nom client" %></div>
             <div class="colone"><%= "Type" %></div>
             <div class="colone"><%= "Date CE/PC" %></div>
             <div class="colone"><%= "Statut" %></div>
@@ -19,8 +18,7 @@
                 <%= link_to etude_path(etude) do %>
                         <div class="ligne">
                             <div class="colone"><%= etude.references %> <%= etude.nom %></div>
-                            <div class="colone"><%= etude.prenom_client %> <%= etude.nom_client %></div>
-                            <div class="colone"><%= etude.type %></div>
+                            <div class="colone"><%= etude.type_client %></div>
                             <div class="colone"><%= etude.date_convetu %></div>
                             <div class="colone"><%= etude.statut %></div>
                             <div class="colone"><%= etude.prestation %></div>

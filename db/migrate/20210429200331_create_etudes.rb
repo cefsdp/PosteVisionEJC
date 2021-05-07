@@ -3,7 +3,7 @@ class CreateEtudes < ActiveRecord::Migration[6.1]
     create_table :etudes do |t|
       t.string :references
       t.string :nom
-      t.string :type
+      t.string :type_client
       t.string :prestation
       t.string :provenance
       t.string :campus

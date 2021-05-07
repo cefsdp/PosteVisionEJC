@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_04_29_200331) do
   create_table "etudes", force: :cascade do |t|
     t.string "references"
     t.string "nom"
-    t.string "type"
+    t.string "type_client"
     t.string "prestation"
     t.string "provenance"
     t.string "campus"
