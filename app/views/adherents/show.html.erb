@@ -5,7 +5,8 @@
 		<span><%= link_to adherent_path(@adherent), method: :delete do %>Supprimer l'étudiant <i class="far fa-trash-alt delete"></i><% end %></span>
         <br>
         <div> Prenom : <%= @adherent.prenom %></div> 
-        <div> Nom : <%= @adherent.nom %></div> 
+        <div> Nom : <%= @adherent.nom %></div>
+        <div> Num BA : <%= @adherent.num_ba %></div>  
         <br>
         <div> Adresse Email : <%= @adherent.mail %></div> 
         <div> Telephone : <%= @adherent.telephone %></div> 
@@ -17,7 +18,8 @@
         <div> Master : <%= @adherent.master %></div> 
         <br>
         <div> Date de Naissance : <%= @adherent.date_naissance %></div> 
-        <div> Numero Securite Social : <%= @adherent.numero_securite_social %></div> 
+        <div> Numero Securite Social : <%= @adherent.numero_securite_social %></div>
+        <div> Nationalite : <%= @adherent.nationalite %></div>  
         <br>
         <div> Commune de Naissance : <%= @adherent.commune_naissance %></div> 
         <div> Code Postal de Naissance : <%= @adherent.codepostal_naissance %></div> 

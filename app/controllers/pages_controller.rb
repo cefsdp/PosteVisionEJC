@@ -16,11 +16,12 @@ class PagesController < ApplicationController
   end
 
   def loader_adherent
-    getting_etude
+    Adherent.delete_all
+    getting_adherent
   end
 
   def saver_adherent
-    saving_etude
+    saving_adherent
   end
 
   private
@@ -66,7 +67,7 @@ class PagesController < ApplicationController
       @ws[row, 11], @ws[row, 13], @ws[row, 14], @ws[row, 15] = etude.campus, etude.date_demande, etude.telephone, etude.mail
       @ws[row, 16], @ws[row, 17], @ws[row, 18], @ws[row, 19], @ws[row, 20] = etude.nbre_propcom, etude.date_propcom, etude.nbre_convetu, etude.date_convetu, etude.conv_cadre
       @ws[row, 21], @ws[row, 22], @ws[row, 23], @ws[row, 24] = etude.date_convcadre, etude.num_bdc, etude.budget_total_ht, etude.taux_marge
-      @ws[row, 44], @ws[row, 45] = etude.frais_ht
+      @ws[row, 44] = etude.frais_ht
       @ws[row, 49], @ws[row, 50] = etude.statut, etude.data_debut_etude
       @ws[row, 51] = row
       etude.date_convetu.nil? ? 0 : @ws[row, 52] = etude.date_convetu.mjd - etude.date_demande.mjd
@@ -78,8 +79,7 @@ class PagesController < ApplicationController
   def getting_adherent
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1yvs5IMF0yCZu5sahmroNnWo9RMPZwL2NDE2LQwPjIoI").worksheet_by_gid("1979299984")
-    raise
+    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
     (2..@ws.num_rows).each do |row|
       @adherent = Adherent.new(adherent_params(row))
       @adherent.save
@@ -88,9 +88,42 @@ class PagesController < ApplicationController
   end
 
   def adherent_params(row)
+    @ws[row, 26] == "OUI" ? alumni_ejc = true : alumni_ejc = false
+    @ws[row, 25] == "OUI" ? membre = true : membre = false
+    @ws[row, 24] == "OUI" ? master = true : master = false
+    @ws[row, 35] == "OUI" ? demission = true : demission = false
     {
-      references: @ws[row, 6]
-
+      prenom: @ws[row, 2], nom: @ws[row, 3], 
+      mail: @ws[row, 5], telephone: @ws[row, 4], num_ba: @ws[row, 6],
+      adresse: @ws[row, 7], codepostal: @ws[row, 8], ville: @ws[row, 33],
+      date_naissance: @ws[row, 9], numero_securite_social: @ws[row, 10], commune_naissance: @ws[row, 11], codepostal_naissance: @ws[row, 12],
+      nom_banque: @ws[row, 13], iban: @ws[row, 14], bic: @ws[row, 15],
+      annee_mandat: @ws[row, 27], campus: @ws[row, 28], pole: @ws[row, 30], poste: @ws[row, 29],
+      cvec: @ws[row, 18], ba: @ws[row, 22], cotisation: @ws[row, 34], certificat_scolarite: @ws[row, 19],
+      carte_vital: @ws[row, 20], carte_identite: @ws[row, 21], nationalite: @ws[row, 31],
+      alumni_ejc: alumni_ejc, membre: membre, master: master, demission: demission
     }
+  end
+
+  def saving_adherent
+    require "google_drive"
+    session = GoogleDrive::Session.from_config("config/client_secret.json")
+    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("521892689")
+    Adherent.all.each_with_index do |adherent, row|
+      row += 2
+      @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.id, adherent.prenom, adherent.nom
+      @ws[row, 4], @ws[row, 5], @ws[row, 6] = adherent.telephone, adherent.mail, adherent.num_ba
+      @ws[row, 7], @ws[row, 8], @ws[row, 9] = adherent.adresse, adherent.codepostal, adherent.date_naissance
+      @ws[row, 10], @ws[row, 11], @ws[row, 12] = adherent.numero_securite_social, adherent.commune_naissance, adherent.codepostal_naissance
+      @ws[row, 13], @ws[row, 14], @ws[row, 15] = adherent.nom_banque, adherent.iban, adherent.bic
+      @ws[row, 18], @ws[row, 19], @ws[row, 20] = adherent.cvec, adherent.certificat_scolarite, adherent.carte_vital
+      @ws[row, 21], @ws[row, 23] = adherent.carte_identite, adherent.ba
+      @ws[row, 24], @ws[row, 25], @ws[row, 26] = adherent.master, adherent.membre, adherent.alumni_ejc
+      @ws[row, 27], @ws[row, 28], @ws[row, 29] = adherent.annee_mandat, adherent.campus, adherent.poste
+      @ws[row, 30], @ws[row, 31], @ws[row, 32] = adherent.pole, adherent.nationalite, row
+      @ws[row, 33], @ws[row, 34], @ws[row, 35] = adherent.ville, adherent.cotisation, adherent.demission
+    end
+    @ws.save
+    redirect_to adherents_url
   end
 end
