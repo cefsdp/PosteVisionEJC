@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_205126) do
+ActiveRecord::Schema.define(version: 2021_05_07_212425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,21 @@ ActiveRecord::Schema.define(version: 2021_05_07_205126) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "phases", force: :cascade do |t|
+    t.bigint "etude_id", null: false
+    t.string "nom"
+    t.date "date_debut"
+    t.date "date_fin"
+    t.integer "nbre_interv"
+    t.integer "nbre_jeh_indiv"
+    t.float "budget_ht"
+    t.boolean "pvr"
+    t.boolean "facture"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["etude_id"], name: "index_phases_on_etude_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -107,4 +122,5 @@ ActiveRecord::Schema.define(version: 2021_05_07_205126) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "phases", "etudes"
 end

@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+            <%= simple_form_for(@phase) do |f| %>
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Titre">Informations sur la phase :</div>
+                        <div class="Contenu">
+                            <div class="part">
+                                <div class="item2"><%= f.input :nom, label: "Nom de la phase :" %></div>
+                                <div class="item2"><%= f.input :budget_ht, label: "Budget HT de la phase" %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :date_debut, as: :date, html5: true, label: "Date de début :" %></div>
+                                <div class="item2"><%= f.input :date_fin, as: :date, html5: true, label: "Date de fin :" %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :nbre_interv, label: "Nombre Intervenants:" %></div>
+                                <div class="item2"><%= f.input :nbre_jeh_indiv, label: "Nombre JEH / interv" %></div>
+                            </div>
+                            <div class="part">
+                                <%= f.input :pvr, as: :boolean, checked_value: true, unchecked_value: false, label: "Procès Verbal ?" %>
+                                <%= f.input :facture, as: :boolean, checked_value: true, unchecked_value: false, label: "Facture ?" %>
+                            </div>
+                        </div>
+                    </div>
+                    <%= f.submit "Enregistrer", id: "Creation" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
