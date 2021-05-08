@@ -5,6 +5,7 @@ class EtudesController < ApplicationController
 
   def show
     @etude = Etude.find(params[:id])
+    @phases = @etude.phases
   end
 
   def new
@@ -84,6 +85,5 @@ class EtudesController < ApplicationController
       etude.date_convetu.nil? ? 0 : @ws[row, 52] = etude.date_convetu.mjd - etude.date_demande.mjd
     end
     @ws.save
-    redirect_to etudes_url
   end
 end

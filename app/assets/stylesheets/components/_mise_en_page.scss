@@ -1,0 +1,45 @@
+.mise_en_page1 {
+    width: 95%;
+    .title {
+        display: flex;
+        align-content: center;
+        .titre {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 30px;
+            color: #0000FF;
+            margin: 20px;
+        }
+        span {
+            font-size: 18px;
+            margin: 20px 0px;
+            padding: 0px 4px;
+        }
+    }
+
+    .bigcartes {
+        display: flex;
+        justify-content: space-around;
+        align-content: space-between;
+        width: 100%;
+        .partcarte {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 25%;
+        }
+    }
+
+    .partphase {
+        padding: 0px 50px;
+        .titre {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #0000FF;
+        }
+
+    }
+}
+
+

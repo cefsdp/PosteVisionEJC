@@ -2,19 +2,19 @@
 
 <div class="main">
     <h1>Gestion des étudiants</h1>
-    <div class="Cartes">
+    <div class="cartes">
         <% @adherents.each do |adherent| %>
             <%= link_to adherent_path(adherent) do %>
-                    <div class="Carte">
-                        <div class="Identite">
-                            <div class="Prenom">
+                    <div class="carte">
+                        <div class="identite">
+                            <div class="prenom">
                                 <%= adherent.prenom %>
                             </div>
-                            <div class="Nom">
+                            <div class="nom">
                                 <%= adherent.nom %>
                             </div>
                         </div>
-                        <div class="Documents">
+                        <div class="documents">
                             <% if adherent.cvec == true %><div class="docvert">cvec</div><% else %><div class="docrouge">cvec</div><% end %>
                             <% if adherent.carte_identite == true %><div class="docvert">ID</div><% else %><div class="docrouge">ID</div><% end %>
                             <% if adherent.carte_vital == true %><div class="docvert">CarteVitale</div><% else %><div class="docrouge">CarteVitale</div><% end %>

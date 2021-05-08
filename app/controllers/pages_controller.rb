@@ -41,8 +41,8 @@ class PagesController < ApplicationController
     {
       references: @ws[row, 6], nom: @ws[row, 7], type_client: @ws[row, 8], prestation: @ws[row, 9], provenance: @ws[row, 10],
       campus: @ws[row, 11], date_demande: @ws[row, 13],
-      nom_client: "Non enregisté", prenom_client: "Non enregisté", appelation_client: "Non enregisté",
-      poste_client: "Non enregisté", adresse: "Non enregisté", codepostal: "Non enregisté", ville: "Non enregisté",
+      nom_client: "N/A", prenom_client: "N/A", appelation_client: "N/A",
+      poste_client: "N/A", adresse: "N/A", codepostal: "N/A", ville: "N/A",
       mail: @ws[row, 15], telephone: @ws[row, 14],
       nbre_propcom: @ws[row, 16], nbre_convetu: @ws[row, 18], conv_cadre: @ws[row, 20],
       date_propcom: @ws[row, 17], date_convetu: @ws[row, 19], date_convcadre: @ws[row, 21],

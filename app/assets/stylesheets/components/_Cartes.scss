@@ -1,7 +1,7 @@
-.Cartes {
+.cartes {
     display: flex;
     flex-wrap: wrap;
-    .Carte {
+    .carte {
         border: solid;
         border-width: 1px;
         border-radius: 10px;
@@ -9,7 +9,8 @@
         text-decoration: none;
         padding: 10px;
         margin: 10px;
-        .Identite {
+        width: 25%;
+        .identite {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,7 +19,7 @@
             font-weight: 700;
             font-size: 20px;
         }
-        .Documents {
+        .documents {
             display: flex;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -29,6 +30,181 @@
             }
             .docvert {
                 color: lightgreen;
+            }
+        }
+
+
+        .titre {
+            display: flex;
+            justify-content: space-between;
+            color: #0000FF;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            .icone {
+                display: flex;
+                span {
+                    margin: 0px 2px;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .texte {
+                display: flex;
+                font-family: 'Poppins', sans-serif;
+                color: #0000FF;
+                font-weight: 600;
+                font-size: 12px;
+                justify-content: space-between;
+                align-items: center;
+                i {
+                    margin-right: 2px;
+                }
+            }
+        }
+    }
+}
+
+
+.bigcarte {
+    border: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: #FFBA09;
+    text-decoration: none;
+    padding: 10px;
+    margin: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .titre {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        color: #0000FF;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        .icone {
+            display: flex;
+            span {
+                margin: 0px 2px;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .content{
+        display: flex;
+        flex-direction: column;
+
+        .texte {
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            color: #0000FF;
+            font-weight: 500;
+            font-size: 14px;
+            align-items: center;
+            i {
+                margin-right: 5px;
+            }
+        }
+        .tableau {
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            color: #0000FF;
+            font-weight: 500;
+            font-size: 14px;
+            .headligne {
+                display: grid;
+                border: solid;
+                border-width: 0px 0px 1px 0px;
+                border-color: #0000FF;
+                grid-template-columns: repeat(3, 1fr);
+                .colone {
+                    display: flex;
+                    width: 100%;
+                    align-content: center;
+                    justify-content: center;
+                }
+            }
+            .mainligne{
+                display: grid;
+                border: solid;
+                border-width: 0px 0px 1px 0px;
+                border-color: #0000FF;
+                grid-template-columns: repeat(3, 1fr);
+                .colone {
+                    display: flex;
+                    width: 100%;
+                    align-content: center;
+                    justify-content: center;
+                }
+            }
+        }
+    }
+}
+
+.cartesPhase {
+    display: flex;
+    flex-wrap: wrap;
+    .carte {
+        border: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #FFBA09;
+        text-decoration: none;
+        padding: 10px;
+        margin: 10px;
+        width: 25%;
+        .phase {
+            .titre {
+                display: flex;
+                justify-content: space-between;
+                color: #0000FF;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 700;
+                font-size: 16px;
+                .icone {
+                    display: flex;
+                    span {
+                        margin: 0px 2px;
+                        font-size: 12px;
+                    }
+                }
+            }
+            .content{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                .texte {
+                    display: flex;
+                    font-family: 'Poppins', sans-serif;
+                    color: #0000FF;
+                    font-weight: 600;
+                    font-size: 12px;
+                    justify-content: space-between;
+                    align-items: center;
+                    i {
+                        margin-right: 2px;
+                    }
+                }
+            }
+        }
+        a {
+            .new {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 40px;
             }
         }
     }

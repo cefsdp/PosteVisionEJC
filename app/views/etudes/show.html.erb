@@ -1,59 +1,166 @@
 <div class="main">
-    <span><%= link_to edit_etude_path(@etude) do %>Modifier les informations <i class="far fa-edit edit"></i><% end %></span>
-    <span><%= link_to etude_path(@etude), method: :delete do %>Supprimer l'étude <i class="far fa-trash-alt delete"></i><% end %></span>
+    <div class="mise_en_page1">
+        <div class="title">
+            <div class="titre"><%= @etude.references %> - <%= @etude.nom %>
+            </div>
+            <span><%= link_to edit_etude_path(@etude) do %><i class="far fa-edit edit"></i><% end %></span>
+            <span><%= link_to etude_path(@etude), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %></span>
+        </div>
 
-    <div class="Titre">Informations sur l'étude :</div>
-    <div class="item"> Référence : <%= @etude.references %> </div>
-    <div class="item"> Nom de l'étude : <%= @etude.nom %> </div>
-    <div class="item"> Date de la demande : <%= @etude.date_demande %> </div>
+        <div class="bigcartes">
+            <div class="partcarte">
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-info-circle"></i> Informations sur l'étude</div>
+                    </div>
+                    <div class="content">
+                        <div class="texte"><i class="fas fa-id-card"></i>Reference : <%= @etude.references %><% unless @etude.num_bdc.nil? %><div>, Numéro de BdC :<%= @etude.num_bdc %></div> <% end %> </div>
+                        <div class="texte"><i class="fas fa-building"></i>Entreprise : <%= @etude.nom %></div>
+                        <div class="texte"><i class="fas fa-list-ul"></i>Type de prestation : <%= @etude.prestation %></div>
+                        <div class="texte"><i class="fas fa-calendar-day"></i>Date de la demande : <%= @etude.date_demande %></div>
+                        <div class="texte"><i class="fas fa-city"></i>Campus en charge : <%= @etude.campus %> </div>
+                    </div>
+                </div>
 
-    <div class="item"> Type : <%= @etude.type_client %> </div>
-    <div class="item"> Prestation : <%= @etude.prestation %> </div>
-    <div class="item"> Campus : <%= @etude.campus %> </div>
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-money-bill-alt"></i> Budget de l'étude</div>
+                    </div>
+                    <div class="content">
+                        <div class="texte"><i class="fas fa-shopping-cart"></i>Budget HT : <%= @etude.budget_HT %></div>
+                        <div class="texte"><i class="fas fa-funnel-dollar"></i>Frais HT : <%= @etude.frais_ht %> </div>
+                        <div class="texte"><i class="fas fa-money-check-alt"></i>Budget Total HT : <%= @etude.budget_total_ht %></div>
+                        <div class="texte"><i class="fas fa-receipt"></i>Budget Total TTC : <%= @etude.budget_total_ttc %></div>
+                        <div class="texte"><i class="fas fa-hand-holding-usd"></i>Taux de marge : <%= @etude.taux_marge %></div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="Titre">Contacts du client :</div>
-    <div class="item"> Mail : <%= @etude.mail %> </div>
-    <div class="item"> Telephone : <%= @etude.telephone %> </div>
+            <div class="partcarte">
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-money-bill-alt"></i> Statut de l'étude</div>
+                    </div>
+                    <div class="content">
+                        <div class="texte"><i class="fas fa-play"></i>Statut : <%= @etude.statut %></div>
+                        <div class="texte"><i class="fas fa-calendar-day"></i>Date de début : <%= @etude.data_debut_etude %>  </div>
+                    </div>
+                </div>
 
-    <div class="Titre">Informations sur le client :</div>
-    <div class="item"> Nom du client : <%= @etude.appelation_client %> <%= @etude.prenom_client %>  <%= @etude.nom_client %> </div>
-    <div class="item"> Poste du client : <%= @etude.poste_client %> </div>
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-user-tie"></i> Informations sur le client</div>
+                    </div>
+                    <div class="content">
+                        <div class="texte"><i class="fas fa-id-card"></i>Nom du client : <%= @etude.appelation_client %> <%= @etude.prenom_client %>  <%= @etude.nom_client %></div>
+                        <div class="texte"><i class="fas fa-at"></i>Mail : <%= @etude.mail %>  </div>
+                        <div class="texte"><i class="fas fa-phone"></i>Telephone : <%= @etude.telephone %></div>
+                        <div class="texte"><i class="fas fa-user-tag"></i>Poste : <%= @etude.poste_client %></div>
+                        <div class="texte"><i class="fas fa-building"></i>Type d'entreprise : <%= @etude.type_client %></div>
+                        <div class="texte"><i class="fas fa-map-marked-alt"></i>Adresse courrier : <%= @etude.adresse %></div>
+                        <div class="texte"><i class="fas fa-map-marked-alt"></i>Code Postal, Ville : <%= @etude.codepostal %> <%= @etude.ville %></div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="Titre">Adresse de l'entreprise :</div>
-    <div class="item"> Adresse : <%= @etude.adresse %> <%= @etude.codepostal %> <%= @etude.ville %> </div>
+            <div class="partcarte">
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-file-signature"></i> Informations Contractuelles</div>
+                    </div>
+                    <div class="content">
+                        <div class="texte"><i class="fas fa-sort-numeric-up-alt"></i>Nombre de PC envoyés : <%= @etude.nbre_propcom %></div>
+                        <div class="texte"><i class="fas fa-calendar-check"></i>Date de la première PC : <%= @etude.date_propcom %></div>
+                        <div class="texte"><i class="fas fa-signature"></i>Nombre de CE/BdC envoyés : <%= @etude.nbre_convetu %></div>
+                        <div class="texte"><i class="fas fa-calendar-check"></i>Date de signature : <%= @etude.date_convetu %></div>
+                        <div class="texte"><i class="fas fa-handshake"></i>Etude sous convention cadre : <%= @etude.conv_cadre ? "Oui" : "Non" %></div>
+                        <div class="texte"><i class="fas fa-calendar-check"></i>Date signature de la convention cadre : <%= @etude.date_convcadre %></div>
+                    </div>
+                </div>
 
-    <div class="Titre">Proposition commerciale :</div>
-    <div class="item"> Nbre Propositions Commericales : <%= @etude.nbre_propcom %> envoyée le <%= @etude.date_propcom %></div>
-    <div class="item"> Nbre Conventions d'études :<%= @etude.nbre_convetu %> signée le <%= @etude.date_convetu %></div>
-    <div class="item"> Convention Cadre :<%= @etude.conv_cadre %> signée le <%= @etude.date_convcadre %></div>
-    <div class="item"> Numéro de BdC :<%= @etude.num_bdc %> </div>
+                <div class="bigcarte">
+                    <div class="titre">
+                        <div class="texte"><i class="fas fa-hard-hat"></i> Avenants</div>
+                    </div>
+                    <div class="content">
+                        <div class="tableau">
+                            <div class="headligne">
+                                <div class="mcolone">Imputables</div>
+                                <div class="colone">junior</div>
+                                <div class="colone">Client</div>
+                            </div>
+                            <div class="mainligne">
+                                <div class="mcolone">Methodologie</div>
+                                <div class="colone"><%= @etude.nbre_av_je_methodo %></div>
+                                <div class="colone"><%= @etude.nbre_av_client_methodo %></div>
+                            </div>
+                            <div class="mainligne">
+                                <div class="mcolone">Délais</div>
+                                <div class="colone"><%= @etude.nbre_av_je_delais %></div>
+                                <div class="colone"><%= @etude.nbre_av_client_delais %></div>
+                            </div>
+                            <div class="mainligne">
+                                <div class="mcolone">Budget</div>
+                                <div class="colone"><%= @etude.nbre_av_je_budget %></div>
+                                <div class="colone"><%= @etude.nbre_av_client_budget %></div>
+                            </div>
+                            <div class="mainligne">
+                                <div class="mcolone">Rupture</div>
+                                <div class="colone"><%= @etude.nbre_av_je_rupture %></div>
+                                <div class="colone"><%= @etude.nbre_av_client_rupture %></div>
+                            </div>
+                            <div class="mainligne">
+                                <div class="mcolone">RM</div>
+                                <div class="colone"><%= @etude.nbre_av_je_rm %></div>
+                                <div class="colone"><%= @etude.nbre_av_client_rm %></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <div class="Titre">Avenants imputables à la junior :</div>
-    <div class="item"> Nbre Avenant Methodo : <%= @etude.nbre_av_je_methodo %> </div>
-    <div class="item"> Nbre Avenant Delais : <%= @etude.nbre_av_je_delais %> </div>
-    <div class="item"> Nbre Avenant Budget : <%= @etude.nbre_av_je_budget %> </div>
-    <div class="item"> Nbre Avenant Rupture : <%= @etude.nbre_av_je_rupture %> </div>
-    <div class="item"> Nbre Avenant RM : <%= @etude.nbre_av_je_rm %> </div>
 
-    <div class="Titre">Avenants imputables au client :</div>
-    <div class="item"> Nbre Avenant Methodo : <%= @etude.nbre_av_client_methodo %> </div>
-    <div class="item"> Nbre Avenant Delais : <%= @etude.nbre_av_client_delais %> </div>
-    <div class="item"> Nbre Avenant Budget : <%= @etude.nbre_av_client_budget %> </div>
-    <div class="item"> Nbre Avenant Rupture : <%= @etude.nbre_av_client_rupture %> </div>
-    <div class="item"> Nbre Avenant RM : <%= @etude.nbre_av_client_rm %> </div>
+        </div>
 
-    <div class="Titre">Budget et frais :</div>
-    <div class="item"> budget HT : <%= @etude.budget_HT %> </div>
-    <div class="item"> taux de marge : <%= @etude.taux_marge %> </div>
-    <div class="item"> frais HT : <%= @etude.frais_ht %> </div>
-    <div class="item"> budget total HT : <%= @etude.budget_total_ht %> </div>
-    <div class="item"> budget total TTC : <%= @etude.budget_total_ttc %> </div>
 
-    <div class="Titre">Statut de l'étude :</div>
-    <div class="item"> statut : <%= @etude.statut %> </div>
-    <div class="item"> date de début : <%= @etude.data_debut_etude %> </div>
 
-    <%= link_to new_phase_path do %>
-        <div> Nouvelle phase <i class="fas fa-plus-circle"></i></div>
-    <% end %>
+            <% # raise %>
+        
+        <div class="partphase">
+            <div class="titre">Phases de l'étude :</div>
+            <div class="cartesPhase">
+                <% @phases.each do |phase| %>
+                    <div class="carte">
+                        <div class="phase">
+                            <div class="titre">
+                                <div class="texte"><%= phase.nom %></div>
+                                <div class="icone">
+                                    <span><%= link_to edit_etude_phase_path(@etude, phase) do %><div><i class="far fa-edit edit"></i></div><% end %></span>
+                                    <span><%= link_to etude_phase_path(@etude, phase), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %></span>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <div class="texte"><i class="far fa-calendar-alt"></i>Du <% if phase.date_debut.nil? %> <%= "N/A" %> <% else %><%= phase.date_debut.strftime("%d/%m/%Y") %> <% end %>au<% if phase.date_fin.nil? %> <%= "N/A" %> <% else %><%= phase.date_fin.strftime("%d/%m/%Y") %><% end %></div>
+                                <div class="texte">Nbre Intervenants : <%= phase.nbre_interv %></div>
+                                <div class="texte">Nbre JEH/interv : <%= phase.nbre_jeh_indiv %></div>
+                                <div class="texte">Budget HT : <%= phase.budget_ht %> €</div>
+                                <div class="texte">PVR : <%= phase.pvr.nil? || phase.pvr == false ? "Non" : " Oui"%>,  Facture : <%= phase.facture.nil? || phase.facture == false ? "Non" : " Oui"%></div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+                <div class="carte">
+                    <%= link_to new_etude_phase_path(@etude) do %>
+                        <div class="new">
+                            <div class="icon">
+                                <i class="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
+

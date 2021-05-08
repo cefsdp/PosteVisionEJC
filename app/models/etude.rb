@@ -1,3 +1,3 @@
 class Etude < ApplicationRecord
-  has_many :phases, class_name: "phases", foreign_key: "reference_id"
+  has_many :phases, dependent: :destroy
 end
