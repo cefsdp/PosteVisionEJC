@@ -1,7 +1,7 @@
 .tableau {
     .headline {
         display: grid;
-        grid-template-columns: repeat(11, 1fr);
+        grid-template-columns: repeat(10, 1fr);
         .colone {
         }
     }
@@ -9,7 +9,7 @@
     .mainline{
         .ligne {
             display: grid;
-            grid-template-columns: repeat(11, 1fr);
+            grid-template-columns: repeat(10, 1fr);
             .colone {
                 
             }

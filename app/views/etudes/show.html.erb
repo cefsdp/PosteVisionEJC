@@ -3,53 +3,57 @@
     <span><%= link_to etude_path(@etude), method: :delete do %>Supprimer l'étude <i class="far fa-trash-alt delete"></i><% end %></span>
 
     <div class="Titre">Informations sur l'étude :</div>
-        <div class="item"> Référence : <% @etude.references %> </div>
-        <div class="item"> Nom de l'étude : <% @etude.nom %> </div>
-        <div class="item"> Date de la demande : <% @etude.date_demande %> </div>
+    <div class="item"> Référence : <%= @etude.references %> </div>
+    <div class="item"> Nom de l'étude : <%= @etude.nom %> </div>
+    <div class="item"> Date de la demande : <%= @etude.date_demande %> </div>
 
-        <div class="item"> Type : <% @etude.type %> </div>
-        <div class="item"> Prestation : <% @etude.prestation %> </div>
-        <div class="item"> Campus : <% @etude.campus %> </div>
+    <div class="item"> Type : <%= @etude.type_client %> </div>
+    <div class="item"> Prestation : <%= @etude.prestation %> </div>
+    <div class="item"> Campus : <%= @etude.campus %> </div>
 
     <div class="Titre">Contacts du client :</div>
-        <div class="item"> Mail : <% @etude.mail %> </div>
-        <div class="item"> Telephone : <% @etude.telephone %> </div>
+    <div class="item"> Mail : <%= @etude.mail %> </div>
+    <div class="item"> Telephone : <%= @etude.telephone %> </div>
 
     <div class="Titre">Informations sur le client :</div>
-        <div class="item"> Nom du client : <% @etude.appelation_client %> <% @etude.prenom_client %>  <% @etude.nom_client %> </div>
-        <div class="item"> Poste du client : <% @etude.poste_client %> </div>
+    <div class="item"> Nom du client : <%= @etude.appelation_client %> <%= @etude.prenom_client %>  <%= @etude.nom_client %> </div>
+    <div class="item"> Poste du client : <%= @etude.poste_client %> </div>
 
     <div class="Titre">Adresse de l'entreprise :</div>
-        <div class="item"> Adresse : <% @etude.adresse %> <% @etude.codepostal %> <% @etude.ville %> </div>
+    <div class="item"> Adresse : <%= @etude.adresse %> <%= @etude.codepostal %> <%= @etude.ville %> </div>
 
     <div class="Titre">Proposition commerciale :</div>
-        <div class="item"> Nbre Propositions Commericales : <% @etude.nbre_propcom %> envoyée le <% @etude.date_propcom %></div>
-        <div class="item"> Nbre Conventions d'études :<% @etude.nbre_convetu %> signée le <% @etude.date_convetu %></div>
-        <div class="item"> Convention Cadre :<% @etude.conv_cadre %> signée le <% @etude.date_convcadre %></div>
-        <div class="item"> Numéro de BdC :<% @etude.num_bdc %> </div>
+    <div class="item"> Nbre Propositions Commericales : <%= @etude.nbre_propcom %> envoyée le <%= @etude.date_propcom %></div>
+    <div class="item"> Nbre Conventions d'études :<%= @etude.nbre_convetu %> signée le <%= @etude.date_convetu %></div>
+    <div class="item"> Convention Cadre :<%= @etude.conv_cadre %> signée le <%= @etude.date_convcadre %></div>
+    <div class="item"> Numéro de BdC :<%= @etude.num_bdc %> </div>
 
     <div class="Titre">Avenants imputables à la junior :</div>
-        <div class="item"> Nbre Avenant Methodo : <% @etude.nbre_av_je_methodo %> </div>
-        <div class="item"> Nbre Avenant Delais : <% @etude.nbre_av_je_delais %> </div>
-        <div class="item"> Nbre Avenant Budget : <% @etude.nbre_av_je_budget %> </div>
-        <div class="item"> Nbre Avenant Rupture : <% @etude.nbre_av_je_rupture %> </div>
-        <div class="item"> Nbre Avenant RM : <% @etude.nbre_av_je_rm %> </div>
+    <div class="item"> Nbre Avenant Methodo : <%= @etude.nbre_av_je_methodo %> </div>
+    <div class="item"> Nbre Avenant Delais : <%= @etude.nbre_av_je_delais %> </div>
+    <div class="item"> Nbre Avenant Budget : <%= @etude.nbre_av_je_budget %> </div>
+    <div class="item"> Nbre Avenant Rupture : <%= @etude.nbre_av_je_rupture %> </div>
+    <div class="item"> Nbre Avenant RM : <%= @etude.nbre_av_je_rm %> </div>
 
     <div class="Titre">Avenants imputables au client :</div>
-        <div class="item"> Nbre Avenant Methodo : <% @etude.nbre_av_client_methodo %> </div>
-        <div class="item"> Nbre Avenant Delais : <% @etude.nbre_av_client_delais %> </div>
-        <div class="item"> Nbre Avenant Budget : <% @etude.nbre_av_client_budget %> </div>
-        <div class="item"> Nbre Avenant Rupture : <% @etude.nbre_av_client_rupture %> </div>
-        <div class="item"> Nbre Avenant RM : <% @etude.nbre_av_client_rm %> </div>
+    <div class="item"> Nbre Avenant Methodo : <%= @etude.nbre_av_client_methodo %> </div>
+    <div class="item"> Nbre Avenant Delais : <%= @etude.nbre_av_client_delais %> </div>
+    <div class="item"> Nbre Avenant Budget : <%= @etude.nbre_av_client_budget %> </div>
+    <div class="item"> Nbre Avenant Rupture : <%= @etude.nbre_av_client_rupture %> </div>
+    <div class="item"> Nbre Avenant RM : <%= @etude.nbre_av_client_rm %> </div>
 
     <div class="Titre">Budget et frais :</div>
-        <div class="item"> budget HT : <% @etude.budget_HT %> </div>
-        <div class="item"> taux de marge : <% @etude.taux_marge %> </div>
-        <div class="item"> frais HT : <% @etude.frais_ht %> </div>
-        <div class="item"> budget total HT : <% @etude.budget_total_ht %> </div>
-        <div class="item"> budget total TTC : <% @etude.budget_total_ttc %> </div>
+    <div class="item"> budget HT : <%= @etude.budget_HT %> </div>
+    <div class="item"> taux de marge : <%= @etude.taux_marge %> </div>
+    <div class="item"> frais HT : <%= @etude.frais_ht %> </div>
+    <div class="item"> budget total HT : <%= @etude.budget_total_ht %> </div>
+    <div class="item"> budget total TTC : <%= @etude.budget_total_ttc %> </div>
 
     <div class="Titre">Statut de l'étude :</div>
-        <div class="item"> statut : <% @etude.statut %> </div>
-        <div class="item"> date de début : <% @etude.data_debut_etude %> </div>
-</div>                            
+    <div class="item"> statut : <%= @etude.statut %> </div>
+    <div class="item"> date de début : <%= @etude.data_debut_etude %> </div>
+
+    <%= link_to new_phase_path do %>
+        <div> Nouvelle phase <i class="fas fa-plus-circle"></i></div>
+    <% end %>
+</div>
