@@ -15,8 +15,9 @@
                                 <div class="item2"><%= f.input :date_fin, as: :date, html5: true, label: "Date de fin :" %></div>
                             </div>
                             <div class="part">
-                                <div class="item2"><%= f.input :nbre_interv, label: "Nombre Intervenants:" %></div>
-                                <div class="item2"><%= f.input :nbre_jeh_indiv, label: "Nombre JEH / interv" %></div>
+                                <div class="item3"><%= f.input :nbre_interv, label: "Nombre Intervenants:" %></div>
+                                <div class="item3"><%= f.input :nbre_jeh_indiv, label: "Nombre JEH / interv" %></div>
+                                <div class="item3"><%= f.input :remuneration, label: "Remuneration / interv" %></div>
                             </div>
                             <div class="part">
                                 <%= f.input :pvr, as: :boolean, checked_value: true, unchecked_value: false, label: "Procès Verbal ?" %>

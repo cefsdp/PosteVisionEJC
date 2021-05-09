@@ -1,6 +1,6 @@
 class AdherentsController < ApplicationController
   def index
-    @adherents = Adherent.all
+    @adherents = Adherent.all.order(:nom)
   end
 
   def show
@@ -68,7 +68,7 @@ class AdherentsController < ApplicationController
   def saving_adherent
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("521892689")
+    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.id, adherent.prenom, adherent.nom

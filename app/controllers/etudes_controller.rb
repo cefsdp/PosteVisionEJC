@@ -6,6 +6,7 @@ class EtudesController < ApplicationController
   def show
     @etude = Etude.find(params[:id])
     @phases = @etude.phases
+    @intervenants = @etude.intervenants
   end
 
   def new

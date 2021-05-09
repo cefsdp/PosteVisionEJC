@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :adherents
   resources :etudes do
     resources :phases
+    resources :intervenants
   end
 end

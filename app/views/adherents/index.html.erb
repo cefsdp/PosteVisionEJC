@@ -2,17 +2,16 @@
 
 <div class="main">
     <h1>Gestion des étudiants</h1>
-    <div class="cartes">
+    <div class="cartesEtu">
         <% @adherents.each do |adherent| %>
             <%= link_to adherent_path(adherent) do %>
                     <div class="carte">
-                        <div class="identite">
-                            <div class="prenom">
-                                <%= adherent.prenom %>
+                        <div class="titre">
+                            <div class="texte">
+                                <div><%= adherent.prenom %></div>
+                                <div><%= adherent.nom %></div>
                             </div>
-                            <div class="nom">
-                                <%= adherent.nom %>
-                            </div>
+                            <div class="icone"><span><%= link_to adherent_path(adherent), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %></span></div>
                         </div>
                         <div class="documents">
                             <% if adherent.cvec == true %><div class="docvert">cvec</div><% else %><div class="docrouge">cvec</div><% end %>

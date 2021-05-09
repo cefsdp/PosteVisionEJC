@@ -19,55 +19,7 @@
             font-weight: 700;
             font-size: 20px;
         }
-        .documents {
-            display: flex;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 12px;
-            justify-content: space-between;
-            .docrouge {
-                color: red;
-            }
-            .docvert {
-                color: lightgreen;
-            }
-        }
-
-
-        .titre {
-            display: flex;
-            justify-content: space-between;
-            color: #0000FF;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 16px;
-            .icone {
-                display: flex;
-                span {
-                    margin: 0px 2px;
-                    font-size: 12px;
-                }
-            }
-        }
-
-        .content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            .texte {
-                display: flex;
-                font-family: 'Poppins', sans-serif;
-                color: #0000FF;
-                font-weight: 600;
-                font-size: 12px;
-                justify-content: space-between;
-                align-items: center;
-                i {
-                    margin-right: 2px;
-                }
-            }
-        }
+        
     }
 }
 
@@ -205,6 +157,71 @@
                 align-items: center;
                 justify-content: center;
                 font-size: 40px;
+            }
+        }
+    }
+}
+
+.cartesEtu {
+    display: flex;
+    flex-wrap: wrap;
+    .carte {
+        border: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #FFBA09;
+        text-decoration: none;
+        padding: 10px;
+        margin: 10px;
+        .titre {
+            display: flex;
+            justify-content: space-between;
+            color: #0000FF;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            .texte {
+                display: flex;
+                flex-direction: column;
+            }
+            .icone {
+                display: flex;
+                font-size: 12px;
+                span {
+                    margin: 0px 2px;
+                    font-size: 12px;
+                }
+            }
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .texte {
+                display: flex;
+                font-family: 'Poppins', sans-serif;
+                color: #0000FF;
+                font-weight: 600;
+                font-size: 12px;
+                justify-content: space-between;
+                align-items: center;
+                i {
+                    margin-right: 2px;
+                }
+            }
+        }    
+        .documents {
+            display: flex;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            justify-content: space-between;
+            .docrouge {
+                color: red;
+            }
+            .docvert {
+                color: lightgreen;
             }
         }
     }

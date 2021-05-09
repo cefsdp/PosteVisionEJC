@@ -1,0 +1,20 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+            <%= simple_form_for [@etude, @intervenant] do |f| %>
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Titre">Informations sur l'intervenant :</div>
+                        <div class="Contenu">
+                            <div class="part">
+                                <div class="item2"><%= f.association :phase, label_method: :nom, value_method: :id, include_blank: false, label: "Nom de la phase :" %></div>
+                                <div class="item2"><%= f.association :adherent, collection: Adherent.order(:nom), :label_method => lambda { |adherent| "#{adherent.nom} | #{adherent.prenom}" } %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%= f.submit "Enregistrer", id: "Creation" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
