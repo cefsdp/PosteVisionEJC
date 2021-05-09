@@ -1,5 +1,8 @@
 <div class="main">
     <h1>Gestion des études</h1>
+    <%= link_to new_etude_path do %>
+        <div> Nouveau etude <i class="fas fa-plus-circle"></i></div>
+    <% end %>
     <div class="tableau">
         <div class="headline">
             <div class="colone"><%= "Référence" %></div>
@@ -33,7 +36,4 @@
         </div>
     </div>
 
-    <%= link_to new_etude_path do %>
-        <div> Nouveau etude <i class="fas fa-plus-circle"></i></div>
-    <% end %>
 </div>
