@@ -45,7 +45,7 @@ class PhasesController < ApplicationController
   def phase_params
     params.require(:phase).permit(
       :nom, :date_debut, :date_fin, :nbre_interv, :nbre_jeh_indiv, :budget_ht,
-      :pvr, :facture
+      :pvr, :facture, :remuneration
     )
   end
 end
