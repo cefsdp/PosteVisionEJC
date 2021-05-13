@@ -7,8 +7,9 @@
                         <div class="Titre">Informations sur l'étudiant :</div>
                         <div class="Contenu">
                             <div class="part">
-                                <div class="item2"><%= f.input :prenom %></div>
-                                <div class="item2"><%= f.input :nom %></div>
+                                <div class="item3"><%= f.input :genre, as: :select, collection: ["M.", "Mme."]  %></div>
+                                <div class="item3"><%= f.input :prenom %></div>
+                                <div class="item3"><%= f.input :nom %></div>
                             </div>
                             <div class="part">
                                 <div class="item2"><%= f.input :mail, placeholder: 'user@domain.com', label: "Adresse Electronique :" %></div>

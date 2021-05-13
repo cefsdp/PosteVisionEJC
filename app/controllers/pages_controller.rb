@@ -24,6 +24,16 @@ class PagesController < ApplicationController
     saving_adherent
   end
 
+  def testing_page
+    @adherent = Adherent.find(536)
+    @session = GoogleDrive::Session.from_config("config/client_secret.json")
+    @title = "BA_#{@adherent.num_ba}_#{@adherent.nom}_#{@adherent.prenom}"
+    ba_type_id = "1ptj9tdIEAV8EAko0UKfndKaPw1J8OJH4OLsBzcwWxfs"
+    @template = @session.file_by_id(ba_type_id)
+    file_copy = @template.copy(@title)
+    raise
+  end
+
   private
 
   def getting_etude
@@ -93,7 +103,7 @@ class PagesController < ApplicationController
     @ws[row, 24] == "OUI" ? master = true : master = false
     @ws[row, 35] == "OUI" ? demission = true : demission = false
     {
-      prenom: @ws[row, 2], nom: @ws[row, 3], 
+      num_ba: @ws[row, 2], nom: @ws[row, 3], 
       mail: @ws[row, 5], telephone: @ws[row, 4], num_ba: @ws[row, 6],
       adresse: @ws[row, 7], codepostal: @ws[row, 8], ville: @ws[row, 33],
       date_naissance: @ws[row, 9], numero_securite_social: @ws[row, 10], commune_naissance: @ws[row, 11], codepostal_naissance: @ws[row, 12],
@@ -101,7 +111,8 @@ class PagesController < ApplicationController
       annee_mandat: @ws[row, 27], campus: @ws[row, 28], pole: @ws[row, 30], poste: @ws[row, 29],
       cvec: @ws[row, 18], ba: @ws[row, 22], cotisation: @ws[row, 34], certificat_scolarite: @ws[row, 19],
       carte_vital: @ws[row, 20], carte_identite: @ws[row, 21], nationalite: @ws[row, 31],
-      alumni_ejc: alumni_ejc, membre: membre, master: master, demission: demission
+      alumni_ejc: alumni_ejc, membre: membre, master: master, demission: demission,
+      genre: @ws[row, 36]
     }
   end
 
@@ -111,7 +122,7 @@ class PagesController < ApplicationController
     @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
-      @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.id, adherent.prenom, adherent.nom
+      @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom
       @ws[row, 4], @ws[row, 5], @ws[row, 6] = adherent.telephone, adherent.mail, adherent.num_ba
       @ws[row, 7], @ws[row, 8], @ws[row, 9] = adherent.adresse, adherent.codepostal, adherent.date_naissance
       @ws[row, 10], @ws[row, 11], @ws[row, 12] = adherent.numero_securite_social, adherent.commune_naissance, adherent.codepostal_naissance
@@ -122,6 +133,7 @@ class PagesController < ApplicationController
       @ws[row, 27], @ws[row, 28], @ws[row, 29] = adherent.annee_mandat, adherent.campus, adherent.poste
       @ws[row, 30], @ws[row, 31], @ws[row, 32] = adherent.pole, adherent.nationalite, row
       @ws[row, 33], @ws[row, 34], @ws[row, 35] = adherent.ville, adherent.cotisation, adherent.demission
+      @ws[row, 36] = adherent.genre
     end
     @ws.save
     redirect_to adherents_url

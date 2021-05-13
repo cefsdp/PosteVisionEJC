@@ -64,3 +64,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "google_drive"
+gem 'google-apis-docs_v1', '~> 0.1'
