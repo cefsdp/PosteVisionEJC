@@ -16,7 +16,7 @@
                                 <div class="item2"><%= f.input :telephone, placeholder: '+33 6 99 99 99 99', label: "Numéro de Téléphone :" %></div>
                             </div>
                             <div class="part">
-                                <div class="item2"><%= f.input :num_ba, placeholder: '19126', label: "Numéro de BA :" %></div>
+                                <div class="item2"><%= f.input :num_ba, placeholder: "#{Adherent.all.order(:num_ba).last.num_ba.to_i + 1}", label: "Numéro de BA :" %></div>
                                 <div class="item2"><%= f.input :nationalite, placeholder: 'Français', label: "Nationalité :" %></div>
                             </div>
                             <div class="part">
