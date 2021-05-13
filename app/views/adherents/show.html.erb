@@ -4,6 +4,8 @@
         <span><%= link_to edit_adherent_path(@adherent) do %>Modifier les informations <i class="far fa-edit edit"></i><% end %></span>
 		<span><%= link_to adherent_path(@adherent), method: :delete do %>Supprimer l'étudiant <i class="far fa-trash-alt delete"></i><% end %></span>
         <br>
+        <span><%= link_to "https://docs.google.com/document/d/1ptj9tdIEAV8EAko0UKfndKaPw1J8OJH4OLsBzcwWxfs/edit" do %>Generer un BA <i class="fas fa-file"></i><% end %></span>
+        <br>
         <div> Prenom : <%= @adherent.prenom %></div> 
         <div> Nom : <%= @adherent.nom %></div>
         <div> Num BA : <%= @adherent.num_ba %></div>  
