@@ -72,7 +72,7 @@ class AdherentsController < ApplicationController
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom
-      @ws[row, 4], @ws[row, 5], @ws[row, 6] = `#{adherent.telephone}`, adherent.mail, adherent.num_ba
+      @ws[row, 4], @ws[row, 5], @ws[row, 6] = %Q[="#{adherent.telephone}"], adherent.mail, adherent.num_ba
       @ws[row, 7], @ws[row, 8], @ws[row, 9] = adherent.adresse, adherent.codepostal, adherent.date_naissance
       @ws[row, 10], @ws[row, 11], @ws[row, 12] = adherent.numero_securite_social, adherent.commune_naissance, adherent.codepostal_naissance
       @ws[row, 13], @ws[row, 14], @ws[row, 15] = adherent.nom_banque, adherent.iban, adherent.bic
