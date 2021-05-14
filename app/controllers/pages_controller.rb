@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   def getting_etude
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1yvs5IMF0yCZu5sahmroNnWo9RMPZwL2NDE2LQwPjIoI").worksheet_by_gid("1475592455")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     (2..@ws.num_rows).each do |row|
       @etude = Etude.new(etude_params(row))
       @etude.save
@@ -59,7 +59,7 @@ class PagesController < ApplicationController
       num_bdc: @ws[row, 22], budget_HT: 0, taux_marge: @ws[row, 24],
       nbre_av_je_methodo: 0, nbre_av_je_delais: 0, nbre_av_je_budget: 0, nbre_av_je_rupture: 0, nbre_av_je_rm: 0,
       nbre_av_client_methodo: 0, nbre_av_client_delais: 0, nbre_av_client_budget: 0, nbre_av_client_rupture: 0,
-      nbre_av_client_rm: 0, frais_ht: @ws[row,  44], budget_total_ht: @ws[row, 23], budget_total_ttc: 0,
+      nbre_av_client_rm: 0, frais_ht: @ws[row, 44], budget_total_ht: @ws[row, 23], budget_total_ttc: 0,
       statut: @ws[row, 49], data_debut_etude: @ws[row, 50]
     }
   end
@@ -67,7 +67,7 @@ class PagesController < ApplicationController
   def saving_etude
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1yvs5IMF0yCZu5sahmroNnWo9RMPZwL2NDE2LQwPjIoI").worksheet_by_gid("1475592455")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     Etude.all.each_with_index do |etude, row|
       row += 2
       etude.date_demande.nil? ? @ws[row, 1] = "" : @ws[row, 1] = "#{etude.date_demande.year}#{etude.date_demande.month}"
@@ -89,7 +89,7 @@ class PagesController < ApplicationController
   def getting_adherent
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     (2..@ws.num_rows).each do |row|
       @adherent = Adherent.new(adherent_params(row))
       @adherent.save
@@ -103,7 +103,7 @@ class PagesController < ApplicationController
     @ws[row, 24] == "OUI" ? master = true : master = false
     @ws[row, 35] == "OUI" ? demission = true : demission = false
     {
-      num_ba: @ws[row, 2], nom: @ws[row, 3], 
+      prenom: @ws[row, 2], nom: @ws[row, 3],
       mail: @ws[row, 5], telephone: @ws[row, 4], num_ba: @ws[row, 6],
       adresse: @ws[row, 7], codepostal: @ws[row, 8], ville: @ws[row, 33],
       date_naissance: @ws[row, 9], numero_securite_social: @ws[row, 10], commune_naissance: @ws[row, 11], codepostal_naissance: @ws[row, 12],
@@ -119,7 +119,7 @@ class PagesController < ApplicationController
   def saving_adherent
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom

@@ -42,6 +42,7 @@ class AdherentsController < ApplicationController
   def destroy
     @adherent = Adherent.find(params[:id])
     if @adherent.destroy
+      saving_adherent
       flash[:success] = "L'étudiant a été supprimé"
       redirect_to adherents_path
     else
@@ -68,7 +69,7 @@ class AdherentsController < ApplicationController
   def saving_adherent
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1W0P7EjBCJ8r2oVXjgqJ0pfpsPnFKX4pAgVdtmFBQNEg").worksheet_by_gid("1709918570")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom

@@ -44,6 +44,7 @@ class EtudesController < ApplicationController
   def destroy
     @etude = Etude.find(params[:id])
     if @etude.destroy
+      saving_etude
       flash[:success] = "L'étude a été supprimé"
       redirect_to etudes_url
     else
@@ -70,7 +71,7 @@ class EtudesController < ApplicationController
   def saving_etude
     require "google_drive"
     session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1yvs5IMF0yCZu5sahmroNnWo9RMPZwL2NDE2LQwPjIoI").worksheet_by_gid("1475592455")
+    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     Etude.all.each_with_index do |etude, row|
       row += 2
       etude.date_demande.nil? ? @ws[row, 1] = "" : @ws[row, 1] = "#{etude.date_demande.year}#{etude.date_demande.month}"

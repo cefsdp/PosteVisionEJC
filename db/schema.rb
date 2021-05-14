@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_193759) do
+ActiveRecord::Schema.define(version: 2021_05_14_201016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_05_13_193759) do
     t.bigint "phase_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "num_rm"
     t.index ["adherent_id"], name: "index_intervenants_on_adherent_id"
     t.index ["phase_id"], name: "index_intervenants_on_phase_id"
   end

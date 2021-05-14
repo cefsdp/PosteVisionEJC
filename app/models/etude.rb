@@ -3,10 +3,10 @@ class Etude < ApplicationRecord
   has_many :intervenants, through: :phases
 
   validates :references, presence: true, uniqueness: true
-  validates :statut, presence: true, uniqueness: true
-  validates :type, presence: true, uniqueness: true
-  validates :prestation, presence: true, uniqueness: true
-  validates :campus, presence: true, uniqueness: true
-  validates :provenance, presence: true, uniqueness: true
-  validates :date_demande, presence: true, uniqueness: true
+  validates :statut, presence: true
+  validates :type_client, presence: true
+  validates :prestation, presence: true
+  validates :campus, presence: true
+  validates :provenance, presence: true
+  validates :date_demande, presence: true
 end
