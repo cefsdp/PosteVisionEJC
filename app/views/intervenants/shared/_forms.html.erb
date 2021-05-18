@@ -9,7 +9,7 @@
                             <div class="part">
                                 <div class="item3"><%= f.association :phase, label_method: :nom, value_method: :id, include_blank: false, label: "Nom de la phase :" %></div>
                                 <div class="item3"><%= f.association :adherent, collection: Adherent.order(:nom), :label_method => lambda { |adherent| "#{adherent.nom} | #{adherent.prenom}" } %></div>
-                                <div class="item3"><%= f.input :num_rm, label_method: :nom, label: "Numero de RM :" %></div>
+                                <div class="item3"><%= f.input :num_rm, label: "Numero de RM :" %></div>
                             </div>
                         </div>
                     </div>
