@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/loader_adherent', to: 'pages#loader_adherent'
   get '/saver_adherent', to: 'pages#saver_adherent'
   get '/test', to: 'pages#testing_page'
+  post 'documents/generer', to: 'documents#generer' 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :adherents
@@ -13,4 +14,7 @@ Rails.application.routes.draw do
     resources :phases
     resources :intervenants
   end
+
+  resources :documents
+
 end

@@ -1,0 +1,20 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+            <%= simple_form_for [@document] do |f| %>
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Titre">Informations sur le document :</div>
+                        <div class="Contenu">
+                            <div class="part">
+                                <div class="item3"><%= f.input :nom, label: "Nom du document :" %></div>
+                                <div class="item3"><%= f.input :template, as: :file %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%= f.submit "Enregistrer", id: "Creation" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

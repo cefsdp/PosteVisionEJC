@@ -144,7 +144,7 @@
                                 <div class="texte"><i class="far fa-calendar-alt"></i>Du <% if phase.date_debut.nil? %> <%= "N/A" %> <% else %><%= phase.date_debut.strftime("%d/%m/%Y") %> <% end %>au<% if phase.date_fin.nil? %> <%= "N/A" %> <% else %><%= phase.date_fin.strftime("%d/%m/%Y") %><% end %></div>
                                 <div class="texte">Nbre Intervenants : <%= phase.nbre_interv %></div>
                                 <div class="texte">Nbre JEH/interv : <%= phase.nbre_jeh_indiv %></div>
-                                <div class="texte">Remuneration/interv : <%= phase.remuneration %> €</div>
+                                <div class="texte">Indemnisation/interv : <%= phase.remuneration %> €</div>
                                 <div class="texte">Budget HT : <%= phase.budget_ht %> €</div>
                                 <div class="texte">PVR : <%= phase.pvr.nil? || phase.pvr == false ? "Non" : " Oui"%>,  Facture : <%= phase.facture.nil? || phase.facture == false ? "Non" : " Oui"%></div>
                             </div>
@@ -167,25 +167,27 @@
             <div class="titre">Intervenants sur l'étude :</div>
             <div class="cartesPhase">
                 <% @intervenants.each do |intervenant| %>
-                    <div class="carte">
-                        <div class="phase">
-                            <div class="titre">
-                                <div class="texte"><%= intervenant.adherent.prenom %></div>
-                                <div class="icone">
-                                    <span><%= link_to etude_intervenant_path(@etude, intervenant), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %></span>
+                    <%= link_to etude_intervenant_path(@etude, intervenant) do%>
+                        <div class="carte">
+                            <div class="phase">
+                                <div class="titre">
+                                    <div class="texte"><%= intervenant.adherent.prenom %></div>
+                                    <div class="icone">
+                                        <span><%= link_to etude_intervenant_path(@etude, intervenant) do %><i class="far fa-trash-alt delete"></i><% end %></span>
+                                    </div>
+                                </div>
+                                <div class="titre">
+                                    <div class="texte"><%= intervenant.adherent.nom %></div>
+                                </div>
+                                <div class="content">
+                                    <div class="texte">Phase : <%= intervenant.phase.nom %></div>
+                                    <div class="texte"><i class="far fa-calendar-alt"></i>Du <% if intervenant.phase.date_debut.nil? %> <%= "N/A" %> <% else %><%= intervenant.phase.date_debut.strftime("%d/%m/%Y") %> <% end %>au <% if intervenant.phase.date_fin.nil? %> <%= "N/A" %> <% else %><%= intervenant.phase.date_fin.strftime("%d/%m/%Y") %><% end %></div>
+                                    <div class="texte">JEH : <%= intervenant.phase.nbre_jeh_indiv %></div>
+                                    <div class="texte">Indemnisation : <%= intervenant.phase.remuneration %> €</div>
                                 </div>
                             </div>
-                            <div class="titre">
-                                <div class="texte"><%= intervenant.adherent.nom %></div>
-                            </div>
-                            <div class="content">
-                                <div class="texte">Phase : <%= intervenant.phase.nom %></div>
-                                <div class="texte"><i class="far fa-calendar-alt"></i>Du <% if intervenant.phase.date_debut.nil? %> <%= "N/A" %> <% else %><%= intervenant.phase.date_debut.strftime("%d/%m/%Y") %> <% end %>au <% if intervenant.phase.date_fin.nil? %> <%= "N/A" %> <% else %><%= intervenant.phase.date_fin.strftime("%d/%m/%Y") %><% end %></div>
-                                <div class="texte">JEH : <%= intervenant.phase.nbre_jeh_indiv %></div>
-                                <div class="texte">Remuneration : <%= intervenant.phase.remuneration %> €</div>
-                            </div>
                         </div>
-                    </div>
+                    <% end %>
                 <% end %>
                 <div class="carte">
                     <%= link_to new_etude_intervenant_path(@etude) do %>

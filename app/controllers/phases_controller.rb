@@ -1,3 +1,6 @@
+require "google_drive"
+@session = GoogleDrive::Session.from_credentials(JSON.parse(ENV.fetch('GOOGLE_API_CREDS')))
+
 class PhasesController < ApplicationController
   def new
     @phase = Phase.new
@@ -9,7 +12,7 @@ class PhasesController < ApplicationController
     @etude = Etude.find(params[:etude_id])
     @phase.etude = @etude
     if @phase.save!
-      saving_phase
+      # saving_phase
       redirect_to etude_path(@etude)
     end
   end
@@ -47,6 +50,10 @@ class PhasesController < ApplicationController
 
   private
 
+  def init_google_session
+    @session = GoogleDrive::Session.from_service_account_key("config/google_config.json")
+  end
+
   def phase_params
     params.require(:phase).permit(
       :nom, :date_debut, :date_fin, :nbre_interv, :nbre_jeh_indiv, :budget_ht,
@@ -55,9 +62,8 @@ class PhasesController < ApplicationController
   end
 
   def saving_phase
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1703846856")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1703846856")
     Phase.all.each_with_index do |phase, row|
       row += 2
       @ws[row, 1] = phase.etude.references

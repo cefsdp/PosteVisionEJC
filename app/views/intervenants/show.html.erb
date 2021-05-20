@@ -1,0 +1,34 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Titre">
+                            Informations sur l'intervenant :
+                            <span><%= link_to etude_intervenant_path(@etude, @intervenant), method: :delete do %><i class="far fa-trash-alt delete"></i><% end %></span>
+                        </div>
+
+                        <span><%= link_to documents_generer_path(@rm_params), target: :_blank, method: :generer do %>Generer un RM <i class="fas fa-file"></i><% end %></span>
+                        
+                        <div class="Contenu">
+                            <div class="part">
+                                <div class="item3">Nom de l'intervenant</div>
+                                <div class="item3">Nom de la phase :</div>
+                                <div class="item3">Numero de RM :</div>
+                            </div>
+
+                            <div class="part">
+                                <div class="item2">Date de début :</div>
+                                <div class="item2">Date de fin :</div>
+                            </div>
+
+                            <div class="part">
+                                <div class="item2">Indemnisation :</div>
+                                <div class="item2">JEH :</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>

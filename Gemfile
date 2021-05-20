@@ -63,5 +63,16 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Google APIs
 gem "google_drive"
-gem 'google-apis-docs_v1', '~> 0.1'
+
+# storage
+gem "aws-sdk-s3", require: false
+gem "down"
+
+# transform file via zip
+gem 'rubyzip', '>= 1.0.0'
+gem 'zip-zip'
+
+# XML reader
+gem 'nokogiri', '~> 1.6', '>= 1.6.6.2'

@@ -1,3 +1,5 @@
+require "google_drive"
+
 class AdherentsController < ApplicationController
   def index
     @adherents = Adherent.all.order(:nom)
@@ -53,6 +55,10 @@ class AdherentsController < ApplicationController
 
   private
 
+  def init_google_session
+    @session = GoogleDrive::Session.from_service_account_key("config/google_config.json")
+  end
+
   def adherent_params
     params.require(:adherent).permit(
       :prenom, :nom,
@@ -67,9 +73,8 @@ class AdherentsController < ApplicationController
   end
 
   def saving_adherent
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom
@@ -86,5 +91,20 @@ class AdherentsController < ApplicationController
       @ws[row, 36] = adherent.genre
     end
     @ws.save
+  end
+
+  def ba_document
+    @ba_params = {
+      document_id: Document.find_by(nom: "BA"),
+      change: [
+        { title: "NumeroBA", content: @adherent.num_ba },
+        { title: "PrenomNom", content: "#{@adherent.prenom} #{@adherent.nom}" },
+        { title: "Mme/M", content: @adherent.genre },
+        { title: "AdressePostale", content: @adherent.adresse },
+        { title: "CPetVille", content: "#{@adherent.codepostal} #{@adherent.ville}" },
+        { title: "NumeroTelephone", content: @adherent.telephone },
+        { title: "FaitLe", content: Date.today.strftime('%d/%m/%Y') }
+      ]
+    }
   end
 end

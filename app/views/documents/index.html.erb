@@ -1,0 +1,16 @@
+<div class="main">
+    <h1>Gestion des documents types</h1>
+    <div class="cartesEtu">
+        <% @documents.each do |document| %>
+            <%= link_to edit_document_path(document) do %>
+                    <div class="carte">
+                        <div class="titre">
+                            <div class="texte">
+                                <div><%= document.nom %></div>
+                            </div>
+                        </div>
+                    </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

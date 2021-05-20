@@ -1,3 +1,8 @@
+require "google_drive"
+require "open-uri"
+require 'rexml/document'
+require 'rexml/text'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
@@ -25,21 +30,44 @@ class PagesController < ApplicationController
   end
 
   def testing_page
-    @adherent = Adherent.find(536)
-    @session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @title = "BA_#{@adherent.num_ba}_#{@adherent.nom}_#{@adherent.prenom}"
-    ba_type_id = "1ptj9tdIEAV8EAko0UKfndKaPw1J8OJH4OLsBzcwWxfs"
-    @template = @session.file_by_id(ba_type_id)
-    file_copy = @template.copy(@title)
-    raise
+    zip = Zip::ZipFile.open("app/assets/docs/doc_type.docx")
+    y = generer_triage
+    y.each do |zip_file|
+      file = zip.find_entry(zip_file)
+      doc = Nokogiri::XML.parse(file.get_input_stream)
+      changes.each do |change|
+        doc.xpath("//text()[.='#{change[:title]}']").each do |part|
+          part.content = change[:content]
+        end
+      end
+    end
   end
 
   private
 
+  def generer_triage
+    buffer = []
+    Zip::ZipFile.open("app/assets/docs/doc_type.docx").each do |file|
+      buffer << file.name
+    end
+    final = []
+    buffer.each do |thing|
+      buff = []
+      buff << thing if thing.end_with?(".xml")
+      buff.each do |object|
+      final << object if object.start_with?("word/")
+      end
+    end
+    return final
+  end
+
+  def init_google_session
+    @session = GoogleDrive::Session.from_service_account_key("config/google_config.json")
+  end
+
   def getting_etude
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     (2..@ws.num_rows).each do |row|
       @etude = Etude.new(etude_params(row))
       @etude.save
@@ -65,9 +93,8 @@ class PagesController < ApplicationController
   end
 
   def saving_etude
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     Etude.all.each_with_index do |etude, row|
       row += 2
       etude.date_demande.nil? ? @ws[row, 1] = "" : @ws[row, 1] = "#{etude.date_demande.year}#{etude.date_demande.month}"
@@ -87,9 +114,8 @@ class PagesController < ApplicationController
   end
 
   def getting_adherent
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     (2..@ws.num_rows).each do |row|
       @adherent = Adherent.new(adherent_params(row))
       @adherent.save
@@ -117,9 +143,8 @@ class PagesController < ApplicationController
   end
 
   def saving_adherent
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
       @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom

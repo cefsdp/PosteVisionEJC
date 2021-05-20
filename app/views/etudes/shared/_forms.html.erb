@@ -7,7 +7,8 @@
                         <div class="Contenu">
                             <div class="Titre">Informations sur l'étude :</div>
                             <div class="part">
-                                <div class="item3"><%= f.input :references, placeholder: "#{Etude.all.order(:references).last.references.to_i + 1}" %></div>
+                                <% Etude.all.count == 0 ? ref = "21001" : ref = "#{Etude.all.order(:references).last.references.to_i + 1}" %>
+                                <div class="item3"><%= f.input :references, placeholder: ref %></div>
                                 <div class="item3"><%= f.input :nom %></div>
                                 <div class="item3"><%= f.input :date_demande, as: :date, html5: true, label: "Date de la demande d'étude :" %></div>
                             </div>

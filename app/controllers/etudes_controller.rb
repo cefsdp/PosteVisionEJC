@@ -1,3 +1,6 @@
+require "google_drive"
+@session = GoogleDrive::Session.from_credentials(JSON.parse(ENV.fetch('GOOGLE_API_CREDS')))
+
 class EtudesController < ApplicationController
   def index
     @etudes = Etude.all.order(:references).reverse
@@ -55,6 +58,10 @@ class EtudesController < ApplicationController
 
   private
 
+  def init_google_session
+    @session = GoogleDrive::Session.from_service_account_key("config/google_config.json")
+  end
+
   def etude_params
     params.require(:etude).permit(
       :references, :nom, :type_client, :prestation, :provenance, :campus,
@@ -69,9 +76,8 @@ class EtudesController < ApplicationController
   end
 
   def saving_etude
-    require "google_drive"
-    session = GoogleDrive::Session.from_config("config/client_secret.json")
-    @ws = session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
+    init_google_session
+    @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("880104571")
     Etude.all.each_with_index do |etude, row|
       row += 2
       etude.date_demande.nil? ? @ws[row, 1] = "" : @ws[row, 1] = "#{etude.date_demande.year}#{etude.date_demande.month}"
