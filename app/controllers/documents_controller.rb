@@ -15,7 +15,7 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
     if @document.save
       flash[:success] = "Object successfully created"
-      redirect_to @document
+      redirect_to documents_path
     else
       flash[:error] = "Something went wrong"
       render 'new'
@@ -30,7 +30,7 @@ class DocumentsController < ApplicationController
     @document = Document.find(params[:id])
     if @document.update(document_params)
       flash[:success] = "Object was successfully updated"
-      redirect_to @document
+      redirect_to documents_path
     else
       flash[:error] = "Something went wrong"
       render 'edit'

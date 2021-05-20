@@ -7,6 +7,7 @@ class AdherentsController < ApplicationController
 
   def show
     @adherent = Adherent.find(params[:id])
+    ba_document
   end
 
   def new
