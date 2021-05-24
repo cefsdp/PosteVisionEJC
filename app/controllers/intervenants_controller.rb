@@ -75,7 +75,7 @@ class IntervenantsController < ApplicationController
         { title: "datefin", content: @intervenant.phase.date_fin.strftime('%d/%m/%Y') },
         { title: "Datedebut", content: @intervenant.phase.date_debut.strftime('%d/%m/%Y') },
         { title: "Ville", content: @intervenant.phase.etude.campus },
-        { title: "Indemnisation", content: @intervenant.phase.remuneration },
+        { title: "Indemnis", content: @intervenant.phase.remuneration },
         { title: "Jeh", content: @intervenant.phase.nbre_jeh_indiv },
         { title: "FaitLe", content: Date.today.strftime('%d/%m/%Y') }
       ]
