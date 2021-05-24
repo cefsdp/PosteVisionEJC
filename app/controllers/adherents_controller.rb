@@ -101,9 +101,9 @@ class AdherentsController < ApplicationController
         { title: "NumeroBA", content: @adherent.num_ba },
         { title: "PrenomNom", content: "#{@adherent.prenom} #{@adherent.nom}" },
         { title: "Mme/M", content: @adherent.genre },
-        { title: "AdressePostale", content: @adherent.adresse },
-        { title: "CPetVille", content: "#{@adherent.codepostal} #{@adherent.ville}" },
-        { title: "NumeroTelephone", content: @adherent.telephone },
+        { title: "Adressepostale", content: @adherent.adresse },
+        { title: "Cpville", content: "#{@adherent.codepostal} #{@adherent.ville}" },
+        { title: "Numtelephone", content: @adherent.telephone },
         { title: "FaitLe", content: Date.today.strftime('%d/%m/%Y') }
       ]
     }
