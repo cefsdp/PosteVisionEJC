@@ -86,7 +86,7 @@ class EtudesController < ApplicationController
       @ws[row, 6], @ws[row, 7], @ws[row, 8], @ws[row, 9], @ws[row, 10] = etude.references, etude.nom, etude.type_client, etude.prestation, etude.provenance
       @ws[row, 11], @ws[row, 13], @ws[row, 14], @ws[row, 15] = etude.campus, etude.date_demande, etude.telephone, etude.mail
       @ws[row, 16], @ws[row, 17], @ws[row, 18], @ws[row, 19], @ws[row, 20] = etude.nbre_propcom, etude.date_propcom, etude.nbre_convetu, etude.date_convetu, etude.conv_cadre
-      @ws[row, 21], @ws[row, 22], @ws[row, 23], @ws[row, 24] = etude.date_convcadre, etude.num_bdc, etude.budget_total_ht, etude.taux_marge
+      @ws[row, 21], @ws[row, 22], @ws[row, 23], @ws[row, 24] = etude.date_convcadre, etude.num_bdc, etude.budget_total_ht.to_i, etude.taux_marge
       @ws[row, 44], @ws[row, 45] = etude.frais_ht
       @ws[row, 49], @ws[row, 50] = etude.statut, etude.data_debut_etude
       @ws[row, 51] = row
