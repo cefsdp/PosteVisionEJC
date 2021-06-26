@@ -13,7 +13,7 @@
                                 <div class="item3"><%= f.input :date_demande, as: :date, html5: true, label: "Date de la demande d'étude :" %></div>
                             </div>
                             <div class="part">
-                                <div class="item4"><%= f.input :type_client, as: :select, collection: ["Grand Groupe", "PME", "Entrepreneur", "J.E.", "Association", "Start-up"], label: "Type de client :"  %></div>
+                                <div class="item4"><%= f.input :type_client, as: :select, collection: ["Grand Groupe", "PME", "Entrepreneur", "J.E.", "Association", "Start-up", "Administration Publique"], label: "Type de client :"  %></div>
                                 <div class="item4"><%= f.input :prestation, as: :select, collection: ["Etude de marché", "Etude d'image", "Etude de satisfaction", "Clients Mystère", "Business Plan", "Plan de communication", "Sous traitance", "Autre"], label: "Prestation :"  %></div>
                                 <div class="item4"><%= f.input :campus, as: :select, collection: ["Paris", "Angers", "Bordeaux", "Lyon"]  %></div>
                                 <div class="item4"><%= f.input :provenance, as: :select, collection: ["AO", "Prospection", "Demande client", "Bon de commande"]  %></div>
