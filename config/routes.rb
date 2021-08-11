@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :adherents
   resources :etudes do
     resources :phases
-    resources :intervenants
+    resources :intervenants do
+      resources :notation_intervenants
+    end
   end
 
   resources :documents

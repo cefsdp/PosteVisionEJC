@@ -9,24 +9,53 @@
                         </div>
 
                         <span><%= link_to documents_generer_path(@rm_params), target: :_blank, method: :generer do %>Generer un RM <i class="fas fa-file"></i><% end %></span>
-                        
+                        <%  # raise %>
                         <div class="Contenu">
                             <div class="part">
-                                <div class="item3">Nom de l'intervenant</div>
-                                <div class="item3">Nom de la phase :</div>
-                                <div class="item3">Numero de RM :</div>
+                                <div class="item3">Nom de l'intervenant : <%= @intervenant.adherent.prenom %> <%= @intervenant.adherent.nom %></div>
+                                <div class="item3">Nom de la phase : <%= @intervenant.phase.nom %></div>
+                                <div class="item3">Numero de RM : <%= @intervenant.num_rm %></div>
                             </div>
 
                             <div class="part">
-                                <div class="item2">Date de début :</div>
-                                <div class="item2">Date de fin :</div>
+                                <div class="item2">Date de début : <%= @intervenant.phase.date_debut %></div>
+                                <div class="item2">Date de fin : <%= @intervenant.phase.date_fin %></div>
                             </div>
 
                             <div class="part">
-                                <div class="item2">Indemnisation :</div>
-                                <div class="item2">JEH :</div>
+                                <div class="item2">Indemnisation : <%= @intervenant.phase.remuneration %> €</div>
+                                <div class="item2">JEH : <%= @intervenant.phase.nbre_jeh_indiv %></div>
                             </div>
                         </div>
+
+                        <div class="Titre">
+                            Notation de l'intervenant :
+                            <% if @intervenant.notation_intervenant.nil? %>
+                                <span><%= link_to new_etude_intervenant_notation_intervenant_path(@etude, @intervenant) do %><i class="fas fa-plus-circle"></i><% end %></span>
+                            <% end %>
+                        </div>
+                        <% if @intervenant.notation_intervenant %>
+                            <div class="Contenu">
+                                <div class="part">
+                                    <div class="item1">Principale mission de l'intervenant : <%= @intervenant.notation_intervenant.action_principale  %></div>
+                                </div>
+                                <div class="part">
+                                    <div class="item2">Déroulement de la phase : <%= @intervenant.notation_intervenant.deroulement_phase %>/5</div>
+                                    <div class="item2">Note générale sur l'intervenant : <%= @intervenant.notation_intervenant.avis_etudiant %>/5</div>
+                                </div>
+                                <div class="part">
+                                    <div class="item2">Qualité du travail fourni : <%= @intervenant.notation_intervenant.qualite_travail %></div>
+                                    <div class="item2">Disponibilité / Ponctualité : <%= @intervenant.notation_intervenant.disponibilite %></div>
+                                </div>
+                                <div class="part">
+                                    <div class="item2">Respect des délais de la mission : <%= @intervenant.notation_intervenant.respect_delais %>/5</div>
+                                    <div class="item2">Recommandation : <%= @intervenant.notation_intervenant.recommandation %></div>
+                                </div>
+                                <div class="part">
+                                    <div class="item1">Commentaire sur l'intervenant : <%= @intervenant.notation_intervenant.commentaire %></div>
+                                </div>
+                            </div>
+                        <% end %>
                     </div>
                 </div>
         </div>

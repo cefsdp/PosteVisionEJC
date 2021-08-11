@@ -1,0 +1,34 @@
+<div class="main">
+    <div class="container">
+        <div class="formcontainer">
+            <%= simple_form_for [@etude, @intervenant, @notation_intervenant] do |f| %>
+                <div class="formulaire">
+                    <div class="Categorie">
+                        <div class="Titre">Notation de l'intervenant par le Chargé d'Etude :</div>
+                        <div class="Contenu">
+                            <div class="part">
+                                <div class="item1"><%= f.input :action_principale, label: "Décrivez la principale mission de l'intervenant pendant la mission :" %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :deroulement_phase, label: "Déroulement de la phase  /5:", collection: 0..5 %></div>
+                                <div class="item2"><%= f.input :avis_etudiant, label: "Note générale sur l'étudiant /5 :", collection: 0..5 %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :qualite_travail, label: "Qualité du travail fourni :", as: :select, collection: ["A abandonné la mission", "N'a pas répondu aux attentes", "A répondu aux attentes", "A été au dessus des attentes"] %></div>
+                                <div class="item2"><%= f.input :disponibilite, label: "Disponibilité / Ponctualité :", as: :select, collection: ["Plutôt lent & procrastinateur", "Plutôt disponible & travailleur", "Plutôt perseverant & proactif"] %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item2"><%= f.input :respect_delais, label: "Respect des délais de la mission /5 :", collection: 0..5 %></div>
+                                <div class="item2"><%= f.input :recommandation, label: "Recommandes-tu cet intervenant ?", as: :select, collection: ["Non", "Oui, pour ce type de phase", "Oui, pour une phase différente ou ce type de phase"] %></div>
+                            </div>
+                            <div class="part">
+                                <div class="item1"><%= f.input :commentaire, label: "Commentaire sur l'étudiant :" %></div>
+                            </div>
+                        </div>
+                    </div>
+                    <%= f.submit "Enregistrer", id: "Creation" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

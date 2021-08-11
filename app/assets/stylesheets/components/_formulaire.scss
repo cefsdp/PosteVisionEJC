@@ -1,56 +1,59 @@
 .formcontainer {
-    margin-bottom: 2%;
-    .formulaire {
+  margin-bottom: 2%;
+  .formulaire {
+    display: flex;
+    flex-direction: column;
+    .Categorie {
+      display: flex;
+      flex-direction: column;
+      .Titre {
+        margin: 2% 0% 1% 0%;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 24px;
+        color: #0000ff;
+      }
+      .Contenu {
         display: flex;
         flex-direction: column;
-        .Categorie {
-            display: flex;
-            flex-direction: column;
-            .Titre {
-                margin: 2% 0% 1% 0%;
-                font-family: 'Poppins', sans-serif;
-                font-weight: 700;
-                font-size: 24px;
-                color: #0000FF;
-            }
-            .Contenu {
-                display: flex;
-                flex-direction: column;
-                flex-wrap: wrap;
-                width: 100%;
-                .part {
-                    display: flex;
-                    justify-content: space-between;
-                    align-content: space-between;
-                    align-items: center;
-                    width: 100%;
-                    .item2 {
-                        flex-grow: 0.45;
-                    }
-                    .item3 {
-                        flex-grow: 0.30;
-                    }
-                    .item4 {
-                        flex-grow: 0.20;
-                    }
-                    .item5 {
-                        flex-grow: 0.10;
-                    }
-                }
-                .partbool {
-                    display: flex;
-                    justify-content: space-between;
-                }
-            }
+        flex-wrap: wrap;
+        width: 100%;
+        .part {
+          display: flex;
+          justify-content: space-between;
+          align-content: space-between;
+          align-items: center;
+          width: 100%;
+          .item1 {
+            flex-grow: 1;
+          }
+          .item2 {
+            flex-grow: 0.45;
+          }
+          .item3 {
+            flex-grow: 0.3;
+          }
+          .item4 {
+            flex-grow: 0.2;
+          }
+          .item5 {
+            flex-grow: 0.1;
+          }
         }
-        #Creation {
-            margin-top: 1%;
-            color: #FFFFFF;
-            background-color: #0000FF;
-            border: none;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 30px;
+        .partbool {
+          display: flex;
+          justify-content: space-between;
         }
+      }
     }
+    #Creation {
+      margin-top: 1%;
+      color: #ffffff;
+      background-color: #0000ff;
+      border: none;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+    }
+  }
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_19_232955) do
+ActiveRecord::Schema.define(version: 2021_08_11_113246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -140,6 +140,21 @@ ActiveRecord::Schema.define(version: 2021_05_19_232955) do
     t.index ["phase_id"], name: "index_intervenants_on_phase_id"
   end
 
+  create_table "notation_intervenants", force: :cascade do |t|
+    t.bigint "intervenant_id", null: false
+    t.string "action_principale"
+    t.integer "deroulement_phase"
+    t.integer "avis_etudiant"
+    t.string "qualite_travail"
+    t.string "disponibilite"
+    t.integer "respect_delais"
+    t.string "recommandation"
+    t.string "commentaire"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["intervenant_id"], name: "index_notation_intervenants_on_intervenant_id"
+  end
+
   create_table "phases", force: :cascade do |t|
     t.bigint "etude_id", null: false
     t.string "nom"
@@ -172,5 +187,6 @@ ActiveRecord::Schema.define(version: 2021_05_19_232955) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "intervenants", "adherents"
   add_foreign_key "intervenants", "phases"
+  add_foreign_key "notation_intervenants", "intervenants"
   add_foreign_key "phases", "etudes"
 end
