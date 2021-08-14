@@ -4,12 +4,11 @@ require 'rexml/document'
 require 'rexml/text'
 
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     @navbar = true
-    if user_signed_in?
-    end
+    redirect_to etudes_path if user_signed_in?
   end
 
   def loader_etude
@@ -55,7 +54,7 @@ class PagesController < ApplicationController
       buff = []
       buff << thing if thing.end_with?(".xml")
       buff.each do |object|
-      final << object if object.start_with?("word/")
+        final << object if object.start_with?("word/")
       end
     end
     return final
@@ -100,12 +99,37 @@ class PagesController < ApplicationController
       etude.date_demande.nil? ? @ws[row, 1] = "" : @ws[row, 1] = "#{etude.date_demande.year}#{etude.date_demande.month}"
       etude.date_convetu.nil? ? @ws[row, 2] = "" : @ws[row, 2] = "#{etude.date_convetu.year}#{etude.date_convetu.month}"
       @ws[row, 3] = etude.references
-      @ws[row, 6], @ws[row, 7], @ws[row, 8], @ws[row, 9], @ws[row, 10] = etude.references, etude.nom, etude.type_client, etude.prestation, etude.provenance
-      @ws[row, 11], @ws[row, 13], @ws[row, 14], @ws[row, 15] = etude.campus, etude.date_demande, etude.telephone, etude.mail
-      @ws[row, 16], @ws[row, 17], @ws[row, 18], @ws[row, 19], @ws[row, 20] = etude.nbre_propcom, etude.date_propcom, etude.nbre_convetu, etude.date_convetu, etude.conv_cadre
-      @ws[row, 21], @ws[row, 22], @ws[row, 23], @ws[row, 24] = etude.date_convcadre, etude.num_bdc, etude.budget_total_ht, etude.taux_marge
+      @ws[row,
+6] = etude.references
+      @ws[row,
+7] = etude.nom
+      @ws[row,
+8] = etude.type_client
+      @ws[row, 9] = etude.prestation
+      @ws[row, 10] = etude.provenance
+      @ws[row,
+11] = etude.campus
+      @ws[row, 13] = etude.date_demande
+      @ws[row, 14] = etude.telephone
+      @ws[row, 15] = etude.mail
+      @ws[row,
+16] = etude.nbre_propcom
+      @ws[row,
+17] = etude.date_propcom
+      @ws[row,
+18] = etude.nbre_convetu
+      @ws[row,
+19] = etude.date_convetu
+      @ws[row, 20] = etude.conv_cadre
+      @ws[row,
+21] = etude.date_convcadre
+      @ws[row,
+22] = etude.num_bdc
+      @ws[row, 23] = etude.budget_total_ht
+      @ws[row, 24] = etude.taux_marge
       @ws[row, 44] = etude.frais_ht
-      @ws[row, 49], @ws[row, 50] = etude.statut, etude.data_debut_etude
+      @ws[row, 49] = etude.statut
+      @ws[row, 50] = etude.data_debut_etude
       @ws[row, 51] = row
       etude.date_convetu.nil? ? 0 : @ws[row, 52] = etude.date_convetu.mjd - etude.date_demande.mjd
     end
@@ -147,17 +171,40 @@ class PagesController < ApplicationController
     @ws = @session.spreadsheet_by_key("1noJZd6kty2Ib0345YhRhgrjDNA0SSXmOhhDbXPsl73M").worksheet_by_gid("1050525217")
     Adherent.all.each_with_index do |adherent, row|
       row += 2
-      @ws[row, 1], @ws[row, 2], @ws[row, 3] = adherent.num_ba, adherent.prenom, adherent.nom
-      @ws[row, 4], @ws[row, 5], @ws[row, 6] = adherent.telephone, adherent.mail, adherent.num_ba
-      @ws[row, 7], @ws[row, 8], @ws[row, 9] = adherent.adresse, adherent.codepostal, adherent.date_naissance
-      @ws[row, 10], @ws[row, 11], @ws[row, 12] = adherent.numero_securite_social, adherent.commune_naissance, adherent.codepostal_naissance
-      @ws[row, 13], @ws[row, 14], @ws[row, 15] = adherent.nom_banque, adherent.iban, adherent.bic
-      @ws[row, 18], @ws[row, 19], @ws[row, 20] = adherent.cvec, adherent.certificat_scolarite, adherent.carte_vital
-      @ws[row, 21], @ws[row, 23] = adherent.carte_identite, adherent.ba
-      @ws[row, 24], @ws[row, 25], @ws[row, 26] = adherent.master, adherent.membre, adherent.alumni_ejc
-      @ws[row, 27], @ws[row, 28], @ws[row, 29] = adherent.annee_mandat, adherent.campus, adherent.poste
-      @ws[row, 30], @ws[row, 31], @ws[row, 32] = adherent.pole, adherent.nationalite, row
-      @ws[row, 33], @ws[row, 34], @ws[row, 35] = adherent.ville, adherent.cotisation, adherent.demission
+      @ws[row, 1] = adherent.num_ba
+      @ws[row, 2] = adherent.prenom
+      @ws[row, 3] = adherent.nom
+      @ws[row, 4] = adherent.telephone
+      @ws[row, 5] = adherent.mail
+      @ws[row, 6] = adherent.num_ba
+      @ws[row, 7] = adherent.adresse
+      @ws[row, 8] = adherent.codepostal
+      @ws[row, 9] = adherent.date_naissance
+      @ws[row,
+10] = adherent.numero_securite_social
+      @ws[row,
+11] = adherent.commune_naissance
+      @ws[row, 12] = adherent.codepostal_naissance
+      @ws[row, 13] = adherent.nom_banque
+      @ws[row, 14] = adherent.iban
+      @ws[row, 15] = adherent.bic
+      @ws[row, 18] = adherent.cvec
+      @ws[row, 19] = adherent.certificat_scolarite
+      @ws[row, 20] = adherent.carte_vital
+      @ws[row, 21] = adherent.carte_identite
+      @ws[row, 23] = adherent.ba
+      @ws[row, 24] = adherent.master
+      @ws[row, 25] = adherent.membre
+      @ws[row, 26] = adherent.alumni_ejc
+      @ws[row, 27] = adherent.annee_mandat
+      @ws[row, 28] = adherent.campus
+      @ws[row, 29] = adherent.poste
+      @ws[row, 30] = adherent.pole
+      @ws[row, 31] = adherent.nationalite
+      @ws[row, 32] = row
+      @ws[row, 33] = adherent.ville
+      @ws[row, 34] = adherent.cotisation
+      @ws[row, 35] = adherent.demission
       @ws[row, 36] = adherent.genre
     end
     @ws.save
