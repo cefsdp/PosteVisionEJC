@@ -1,3 +1,5 @@
+require "google_drive"
+
 class NotationIntervenantsController < ApplicationController
   def new
     @etude = Etude.find(params[:etude_id])
