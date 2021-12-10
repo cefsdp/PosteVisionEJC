@@ -82,5 +82,5 @@ class NotationIntervenantsController < ApplicationController
       @ws[row, 10] = notation_intervenant.commentaire
     end
     @ws.save
-  
+  end
 end
